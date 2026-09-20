@@ -698,3 +698,131 @@ body[data-project="arcana"] .tech-header .nav-btn-primary{
     font-size:9px;
   }
 }
+
+
+/* =========================================================
+   v16 — all Network YouTube cards use YouTube Red
+   ========================================================= */
+body[data-project="network"] .hero-video-link,
+body[data-project="network"] .network-video-list a{
+  background:#ff0000 !important;
+  border-color:#ff0000 !important;
+  color:#fff !important;
+  box-shadow:0 8px 24px rgba(255,0,0,.18) !important;
+}
+
+body[data-project="network"] .hero-video-link:hover,
+body[data-project="network"] .network-video-list a:hover{
+  background:#cc0000 !important;
+  border-color:#cc0000 !important;
+  color:#fff !important;
+}
+
+body[data-project="network"] .hero-video-link small,
+body[data-project="network"] .hero-video-link strong,
+body[data-project="network"] .hero-video-link b,
+body[data-project="network"] .hero-video-link .hero-video-link-index,
+body[data-project="network"] .network-video-list a small,
+body[data-project="network"] .network-video-list a strong,
+body[data-project="network"] .network-video-list a b,
+body[data-project="network"] .network-video-list a > span{
+  color:#fff !important;
+}
+
+body[data-project="network"] .hero-video-link .hero-video-link-index,
+body[data-project="network"] .network-video-list a > span{
+  border-color:rgba(255,255,255,.62) !important;
+}
+
+/* Remove special visual difference from the first Network video card.
+   All four gameplay links now have equal YouTube emphasis. */
+body[data-project="network"] .hero-video-link.featured,
+body[data-project="network"] .network-video-list a.primary{
+  background:#ff0000 !important;
+}
+
+
+/* =========================================================
+   v17 — Technical saturation lift
+   Still calmer than Preview, but no longer gray/dull.
+   ========================================================= */
+
+/* Stronger section presence */
+.tech-section{
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb,var(--tech-surface) 24%,transparent),
+      transparent 22%);
+}
+
+.tech-section:nth-child(even){
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb,var(--tech-accent) 7%,transparent),
+      transparent 24%);
+}
+
+/* Make active navigation feel more alive */
+.index-link.active{
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb,var(--tech-accent) 30%,var(--tech-surface)),
+      var(--tech-surface2)) !important;
+  border-left-color:var(--tech-accent) !important;
+  box-shadow:inset 4px 0 0 var(--tech-accent);
+}
+
+.index-link.active span{
+  color:var(--tech-accent) !important;
+}
+
+/* Slightly stronger section numbering / accents */
+.section-number b,
+.section-note b,
+.media-gallery-head strong{
+  color:var(--tech-accent) !important;
+  font-weight:800;
+}
+
+/* Brighter tag treatment */
+.hero-tags span,
+.preview-tags span{
+  background:color-mix(in srgb,var(--tech-surface) 70%,var(--tech-accent) 10%) !important;
+  border-color:color-mix(in srgb,var(--tech-line) 75%,var(--tech-accent) 25%) !important;
+}
+
+/* Media borders pick up a little more project color */
+.media-primary,
+.media-thumb,
+.tech-hero-media{
+  border-color:color-mix(in srgb,var(--tech-line) 72%,var(--tech-accent) 28%) !important;
+}
+
+/* Technical header now feels colored rather than gray */
+.tech-header{
+  box-shadow:
+    0 10px 34px var(--tech-shadow),
+    inset 0 -2px 0 color-mix(in srgb,var(--tech-accent) 45%,transparent);
+}
+
+/* Keep Preview vs Technical distinction:
+   Technical stays a little quieter through lower accent glow intensity. */
+.tech-hero{
+  box-shadow:
+    inset 0 0 120px color-mix(in srgb,var(--tech-accent) 6%,transparent);
+}
+
+/* Light themes get stronger contrast without becoming muddy */
+body[data-project="rpg"] .technical-index,
+body[data-project="vr"] .technical-index,
+body[data-project="monkey"] .technical-index,
+body[data-project="draw"] .technical-index{
+  box-shadow:0 18px 42px color-mix(in srgb,var(--tech-shadow) 75%,transparent);
+}
+
+@media(max-width:760px){
+  .index-link.active{
+    border-bottom-color:var(--tech-accent) !important;
+    box-shadow:inset 0 -3px 0 var(--tech-accent);
+  }
+}
