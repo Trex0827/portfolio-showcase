@@ -100,7 +100,7 @@ const projects = [
   },
   {
     "key": "network",
-    "title": "네트워크 미니 프로젝트",
+    "title": "1vs1 카드 배틀",
     "display": "NETWORK BATTLE",
     "type": "UNREAL ENGINE 5.4 · 3인 제작",
     "cover": "assets/images/network-overview.png",

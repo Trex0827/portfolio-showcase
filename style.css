@@ -773,3 +773,80 @@ button{color:inherit}
     font-size:9px;
   }
 }
+
+
+/* =========================================================
+   v20 — cleaner project-title line breaks
+   ========================================================= */
+
+/* Desktop preview titles were visually overpowering the copy column.
+   Keep the oversized identity, but stop breaking Korean words awkwardly. */
+.preview-copy h2{
+  font-size:clamp(54px,6.25vw,102px) !important;
+  line-height:.90 !important;
+  letter-spacing:-.055em !important;
+  max-width:100% !important;
+  word-break:keep-all !important;
+  overflow-wrap:normal !important;
+  text-wrap:balance;
+  margin:18px 0 24px !important;
+}
+
+/* Longer titles get a little more room instead of being forced into 3–4 lines. */
+.project-preview[data-project="network"] .preview-copy h2{
+  font-size:clamp(52px,5.8vw,94px) !important;
+  line-height:.92 !important;
+}
+
+.project-preview[data-project="vr"] .preview-copy h2{
+  font-size:clamp(56px,6vw,98px) !important;
+}
+
+.project-preview[data-project="monkey"] .preview-copy h2{
+  font-size:clamp(50px,5.7vw,92px) !important;
+  line-height:.92 !important;
+}
+
+.project-preview[data-project="draw"] .preview-copy h2{
+  font-size:clamp(52px,5.85vw,94px) !important;
+  line-height:.92 !important;
+}
+
+/* Slightly widen the text side so long Korean names wrap at phrase boundaries. */
+@media(min-width:821px){
+  .preview-hero{
+    grid-template-columns:.90fr 1.10fr !important;
+    gap:48px !important;
+  }
+
+  .preview-copy{
+    min-width:0;
+  }
+}
+
+@media(max-width:820px){
+  .preview-copy h2{
+    font-size:clamp(46px,12vw,72px) !important;
+    line-height:.92 !important;
+    letter-spacing:-.05em !important;
+    text-wrap:balance;
+  }
+
+  .project-preview[data-project="network"] .preview-copy h2,
+  .project-preview[data-project="monkey"] .preview-copy h2,
+  .project-preview[data-project="draw"] .preview-copy h2{
+    font-size:clamp(42px,10.8vw,66px) !important;
+  }
+}
+
+@media(max-width:520px){
+  .preview-copy h2{
+    font-size:clamp(40px,11.5vw,58px) !important;
+  }
+
+  .project-preview[data-project="network"] .preview-copy h2,
+  .project-preview[data-project="monkey"] .preview-copy h2,
+  .project-preview[data-project="draw"] .preview-copy h2{
+    font-size:clamp(36px,10.5vw,52px) !important;
+  }
+}
