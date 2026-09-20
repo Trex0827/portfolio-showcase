@@ -826,3 +826,205 @@ body[data-project="draw"] .technical-index{
     box-shadow:inset 0 -3px 0 var(--tech-accent);
   }
 }
+
+
+/* =========================================================
+   v18 — stronger project identity in Technical Detail
+   Color is now carried by the WHOLE document, not only accents.
+   ========================================================= */
+
+.technical-layout{
+  position:relative;
+}
+
+/* The index becomes a strong project-color object. */
+.technical-index{
+  background:var(--tech-surface) !important;
+  border:2px solid var(--tech-line) !important;
+  box-shadow:
+    0 18px 48px var(--tech-shadow),
+    inset 0 0 0 1px color-mix(in srgb,var(--tech-accent) 14%,transparent);
+}
+
+.index-head{
+  background:var(--tech-surface2) !important;
+  color:var(--tech-text) !important;
+  border-bottom-color:var(--tech-line) !important;
+}
+
+.index-link{
+  color:var(--tech-muted) !important;
+  border-bottom-color:color-mix(in srgb,var(--tech-line) 72%,transparent) !important;
+}
+
+.index-link:hover{
+  background:color-mix(in srgb,var(--tech-surface2) 82%,var(--tech-accent) 18%) !important;
+  color:var(--tech-text) !important;
+}
+
+.index-link.active{
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb,var(--tech-accent) 42%,var(--tech-surface)),
+      var(--tech-surface2)) !important;
+  color:var(--tech-text) !important;
+  border-left:5px solid var(--tech-accent) !important;
+  box-shadow:
+    inset 5px 0 0 var(--tech-accent),
+    inset 0 0 26px color-mix(in srgb,var(--tech-accent) 12%,transparent);
+}
+
+/* Every implementation section is now a colored document panel. */
+.tech-section{
+  min-height:0;
+  padding:30px 28px 34px !important;
+  border:1px solid var(--tech-line) !important;
+  border-left:5px solid var(--tech-accent) !important;
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb,var(--tech-surface) 94%,transparent),
+      color-mix(in srgb,var(--tech-bg) 86%,transparent)) !important;
+  box-shadow:0 16px 44px var(--tech-shadow);
+}
+
+.tech-section:nth-child(even){
+  border-left-color:var(--tech-accent2) !important;
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb,var(--tech-surface2) 86%,transparent),
+      color-mix(in srgb,var(--tech-bg) 88%,transparent)) !important;
+}
+
+.tech-section:nth-child(even) .section-number b,
+.tech-section:nth-child(even) .section-note b{
+  color:var(--tech-accent2) !important;
+}
+
+/* Stronger section header separation. */
+.section-number{
+  border-bottom:2px solid color-mix(in srgb,var(--tech-line) 75%,var(--tech-accent) 25%) !important;
+  color:var(--tech-muted) !important;
+}
+
+.section-number b{
+  color:var(--tech-accent) !important;
+  font-weight:900;
+}
+
+.section-copy h2{
+  color:var(--tech-text);
+}
+
+.section-copy>p,
+.section-note{
+  color:var(--tech-muted) !important;
+}
+
+/* Tags and small UI elements visibly inherit the project palette. */
+.hero-tags span{
+  background:var(--tech-surface2) !important;
+  border:1px solid var(--tech-line) !important;
+  color:var(--tech-text) !important;
+  box-shadow:inset 0 -2px 0 color-mix(in srgb,var(--tech-accent) 46%,transparent);
+}
+
+/* Media becomes a framed exhibit rather than another black rectangle. */
+.media-primary,
+.media-thumb,
+.tech-hero-media{
+  border:2px solid color-mix(in srgb,var(--tech-line) 65%,var(--tech-accent) 35%) !important;
+  box-shadow:
+    0 18px 52px var(--tech-shadow),
+    0 0 0 1px color-mix(in srgb,var(--tech-accent) 10%,transparent);
+}
+
+/* Project-specific document atmosphere */
+body[data-project="arcana"]{
+  background:
+    radial-gradient(circle at 92% 10%,rgba(255,108,164,.14),transparent 24%),
+    #32172d !important;
+}
+
+body[data-project="rpg"]{
+  background:
+    linear-gradient(rgba(113,77,29,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(113,77,29,.07) 1px,transparent 1px),
+    #e5bf72 !important;
+  background-size:34px 34px;
+}
+
+body[data-project="soul"]{
+  background:
+    radial-gradient(circle at 88% 12%,rgba(255,81,62,.15),transparent 25%),
+    linear-gradient(180deg,#19090b,#0f0708) !important;
+}
+
+body[data-project="network"]{
+  background:
+    linear-gradient(rgba(79,229,255,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(79,229,255,.075) 1px,transparent 1px),
+    #064a7a !important;
+  background-size:42px 42px;
+}
+
+body[data-project="vr"]{
+  background:
+    radial-gradient(circle at 86% 11%,rgba(232,101,196,.22),transparent 24%),
+    radial-gradient(circle at 8% 82%,rgba(114,72,255,.14),transparent 26%),
+    #e4d7ff !important;
+}
+
+body[data-project="monkey"]{
+  background:
+    repeating-linear-gradient(-12deg,
+      rgba(102,125,19,.08) 0,
+      rgba(102,125,19,.08) 3px,
+      transparent 3px,
+      transparent 34px),
+    #dfc93d !important;
+}
+
+body[data-project="draw"]{
+  background:
+    radial-gradient(circle at 10% 18%,rgba(237,73,53,.18),transparent 21%),
+    radial-gradient(circle at 90% 34%,rgba(118,80,229,.15),transparent 20%),
+    #f0a184 !important;
+}
+
+/* Make the next-project footer feel like part of this project's world. */
+.next-project-section{
+  background:
+    linear-gradient(135deg,var(--tech-next),var(--tech-surface2)) !important;
+  border-top:3px solid var(--tech-accent) !important;
+}
+
+/* Light technical themes need dark media captions but strong colored chrome. */
+body[data-project="rpg"] .tech-section,
+body[data-project="vr"] .tech-section,
+body[data-project="monkey"] .tech-section,
+body[data-project="draw"] .tech-section{
+  box-shadow:0 14px 38px color-mix(in srgb,var(--tech-shadow) 90%,transparent);
+}
+
+/* Mobile: preserve the strong project identity without making cards cramped. */
+@media(max-width:760px){
+  .technical-layout{
+    width:92vw;
+  }
+
+  .tech-section{
+    padding:22px 18px 26px !important;
+    border-left-width:4px !important;
+  }
+
+  .technical-index{
+    background:var(--tech-surface) !important;
+    border:1px solid var(--tech-line) !important;
+  }
+
+  .index-link.active{
+    border-left:0 !important;
+    border-bottom:4px solid var(--tech-accent) !important;
+    box-shadow:inset 0 -4px 0 var(--tech-accent);
+  }
+}
