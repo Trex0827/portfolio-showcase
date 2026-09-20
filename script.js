@@ -30,7 +30,8 @@ const projects = [
     "ink": "#fff5f7",
     "accent": "#ff78a8",
     "role": "휴대폰 UI · 앱 기능",
-    "focus": "C++ · UMG · Blueprint"
+    "focus": "C++ · UMG · Blueprint",
+    "mobilePreviewMode": "portrait"
   },
   {
     "key": "rpg",
@@ -316,6 +317,11 @@ function setCssTheme(p){
   document.documentElement.style.setProperty('--accent',p.accent);
 }
 
+function updatePreviewFrameMode(project){
+  const portrait = project.mobilePreviewMode === 'portrait';
+  previewWindow?.classList.toggle('portrait-media', portrait);
+}
+
 async function selectProject(index, animate=true){
   const token = ++projectSwitchToken;
   ++smallPreviewToken; // cancel any pending GIF change from the previous project
@@ -324,6 +330,7 @@ async function selectProject(index, animate=true){
   currentPreviewMedia = 0;
   const p = projects[currentProject];
   setCssTheme(p);
+  updatePreviewFrameMode(p);
 
   // Text and active state can change immediately.
   projectType.textContent = p.type;

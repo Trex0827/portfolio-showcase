@@ -47,3 +47,309 @@
 @media(max-width:1050px){.tech-hero{padding-top:46px}.tech-hero-media{height:auto;aspect-ratio:16/9}.media-primary{height:470px}}
 @media(max-width:760px){html{scroll-padding-top:72px}.tech-header{height:68px;padding:0 3vw;grid-template-columns:1fr auto}.tech-header-left{gap:6px}.tech-header-left #back-showcase{display:inline-flex}.nav-btn{min-height:38px;padding:0 10px;font-size:8px}.tech-header-right select{min-height:38px;max-width:125px}.tech-hero{padding-top:40px}.tech-hero-media{height:auto;aspect-ratio:16/9}.hero-video-badge{left:8px;top:8px;padding:6px 8px}.hero-youtube-open{right:8px;top:8px;padding:7px 8px}.media-primary{height:340px}.media-thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}.media-thumb{height:92px}.floating-tech-nav{right:10px;bottom:10px}.floating-tech-nav a,.floating-tech-nav button{min-height:40px;padding:0 10px}.floating-tech-nav a{max-width:165px}.technical-index{top:68px}}
 @media(max-width:480px){.tech-header-left #back-showcase{display:none}.nav-btn-primary{font-size:7.5px}.hero-actions{display:grid}.hero-actions a{width:100%}.media-primary{height:290px}.media-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}.media-thumb{height:105px}.hero-youtube-open{font-size:7px}.floating-tech-nav a{display:none}}
+
+
+/* =========================================================
+   v9 — project-specific Technical Detail color systems
+   The layout stays consistent, but every project owns a
+   distinct visual palette instead of sharing a generic
+   black/cyan developer-dashboard look.
+   ========================================================= */
+:root{
+  --tech-bg:#2a1728;
+  --tech-surface:#3a2035;
+  --tech-surface2:#47263f;
+  --tech-text:#fff4f8;
+  --tech-muted:#d9bdcc;
+  --tech-line:#6f435f;
+  --tech-accent:#ff7da8;
+  --tech-accent2:#a98cff;
+  --tech-accent-text:#2b1220;
+  --tech-header:rgba(42,23,40,.94);
+  --tech-media:#1c0f1a;
+  --tech-next:#341c31;
+  --tech-shadow:rgba(19,7,16,.34);
+  --tech-hero-bg:linear-gradient(145deg,#2a1728,#482640);
+}
+
+body{
+  background:var(--tech-bg);
+  color:var(--tech-text);
+  transition:background .35s ease,color .35s ease;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 88% 12%,color-mix(in srgb,var(--tech-accent) 14%,transparent),transparent 28%),
+    radial-gradient(circle at 8% 88%,color-mix(in srgb,var(--tech-accent2) 10%,transparent),transparent 30%);
+}
+::selection{background:var(--tech-accent);color:var(--tech-accent-text)}
+.reading-progress span{background:linear-gradient(90deg,var(--tech-accent),var(--tech-accent2))}
+
+.tech-header{
+  background:var(--tech-header);
+  border-color:var(--tech-line);
+  box-shadow:0 8px 32px var(--tech-shadow);
+  color:var(--tech-text);
+}
+.tech-header-left a,.tech-header-center,.tech-header-right label{color:var(--tech-text)}
+.tech-header-center,.tech-header-right label{opacity:.66}
+.tech-header-left a:hover{color:var(--tech-accent)}
+.tech-header select{
+  border-color:var(--tech-line);
+  background:var(--tech-surface);
+  color:var(--tech-text);
+}
+.nav-btn{
+  border-color:var(--tech-line);
+  color:var(--tech-text)!important;
+}
+.nav-btn-primary{
+  background:var(--tech-accent);
+  border-color:var(--tech-accent);
+  color:var(--tech-accent-text)!important;
+}
+.nav-btn-primary:hover{
+  background:var(--tech-accent2);
+  border-color:var(--tech-accent2);
+  color:var(--tech-accent-text)!important;
+}
+.nav-btn-ghost{
+  background:var(--tech-surface);
+  color:var(--tech-text)!important;
+}
+.nav-btn-ghost:hover{
+  background:var(--tech-surface2);
+  border-color:var(--tech-accent)!important;
+}
+
+.tech-hero{
+  background:var(--tech-hero-bg);
+  border-color:var(--tech-line);
+  color:var(--tech-text);
+}
+.eyebrow{color:var(--tech-accent)}
+.hero-desc{color:var(--tech-muted)}
+.hero-tags span{
+  border-color:var(--tech-line);
+  background:color-mix(in srgb,var(--tech-surface) 80%,transparent);
+  color:var(--tech-text);
+}
+.section-link{
+  background:var(--tech-accent);
+  border-color:var(--tech-accent)!important;
+  color:var(--tech-accent-text)!important;
+}
+.section-link:hover{
+  background:var(--tech-accent2);
+  border-color:var(--tech-accent2)!important;
+}
+.tech-hero-media{
+  border-color:var(--tech-line);
+  background:var(--tech-media);
+  box-shadow:0 28px 80px var(--tech-shadow);
+}
+.hero-media-content,
+.hero-media-content img,
+.hero-youtube-frame{background:var(--tech-media)}
+.hero-video-badge:not(.video){
+  background:color-mix(in srgb,var(--tech-surface) 86%,transparent);
+  border-color:var(--tech-line);
+  color:var(--tech-text);
+}
+.hero-youtube-open{
+  background:color-mix(in srgb,var(--tech-surface) 92%,transparent);
+  border-color:var(--tech-line);
+  color:var(--tech-text);
+}
+.hero-youtube-open:hover{
+  background:var(--tech-accent);
+  border-color:var(--tech-accent);
+  color:var(--tech-accent-text);
+}
+
+.technical-layout{color:var(--tech-text)}
+.technical-index{
+  background:var(--tech-surface);
+  border-color:var(--tech-line);
+  box-shadow:0 18px 45px var(--tech-shadow);
+}
+.index-head{
+  color:var(--tech-muted);
+  border-color:var(--tech-line);
+  background:color-mix(in srgb,var(--tech-surface2) 52%,var(--tech-surface));
+}
+.technical-index nav{
+  scrollbar-color:var(--tech-accent) var(--tech-surface);
+}
+.index-link{
+  color:var(--tech-muted);
+  border-color:color-mix(in srgb,var(--tech-line) 62%,transparent);
+}
+.index-link:hover{
+  background:var(--tech-surface2);
+  color:var(--tech-text);
+}
+.index-link.active{
+  background:linear-gradient(90deg,color-mix(in srgb,var(--tech-accent) 22%,transparent),var(--tech-surface2));
+  color:var(--tech-text);
+  border-left-color:var(--tech-accent);
+}
+.index-link.active span{color:var(--tech-accent)}
+
+.tech-section{
+  border-color:var(--tech-line);
+}
+.section-number{
+  border-color:var(--tech-line);
+  color:var(--tech-muted);
+}
+.section-number b{color:var(--tech-accent)}
+.section-copy>p{color:var(--tech-muted)}
+.section-notes{border-color:var(--tech-line)}
+.section-note{
+  color:color-mix(in srgb,var(--tech-text) 78%,var(--tech-muted));
+  border-color:color-mix(in srgb,var(--tech-line) 68%,transparent);
+}
+.section-note b{color:var(--tech-accent)}
+
+.media-primary{
+  border-color:var(--tech-line);
+  background:var(--tech-media);
+  box-shadow:0 18px 55px var(--tech-shadow);
+}
+.media-primary img,.media-primary video{background:var(--tech-media)}
+.media-empty{color:var(--tech-muted)}
+.media-gallery-head{
+  border-color:var(--tech-line);
+  color:var(--tech-muted);
+}
+.media-gallery-head strong{color:var(--tech-accent)}
+.media-thumb{
+  border-color:var(--tech-line);
+  background:var(--tech-media);
+}
+.media-thumb img,.media-thumb video{background:var(--tech-media)}
+.media-thumb:hover{border-color:var(--tech-accent2)}
+.media-thumb.active{
+  border-color:var(--tech-accent);
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--tech-accent) 22%,transparent);
+}
+.thumb-index{
+  background:color-mix(in srgb,var(--tech-media) 88%,transparent);
+  border-color:var(--tech-line);
+  color:#fff;
+}
+.media-caption{color:var(--tech-muted)}
+
+.next-project-section{
+  background:var(--tech-next);
+  border-color:var(--tech-line);
+  color:var(--tech-text);
+}
+.next-actions a,.next-actions button{
+  border-color:var(--tech-line);
+  color:var(--tech-text);
+}
+.next-actions a{background:var(--tech-surface)}
+.next-actions a:hover{
+  border-color:var(--tech-accent);
+  color:var(--tech-accent);
+}
+.next-actions button{
+  background:var(--tech-accent);
+  border-color:var(--tech-accent);
+  color:var(--tech-accent-text);
+}
+.next-actions button:hover{
+  background:var(--tech-accent2);
+  border-color:var(--tech-accent2);
+}
+
+.floating-tech-nav a,.floating-tech-nav button{
+  border-color:var(--tech-line);
+  background:var(--tech-surface);
+  color:var(--tech-text);
+  box-shadow:0 12px 28px var(--tech-shadow);
+}
+.floating-tech-nav a{
+  background:var(--tech-accent);
+  border-color:var(--tech-accent);
+  color:var(--tech-accent-text);
+}
+.floating-tech-nav button:hover{
+  background:var(--tech-accent2);
+  border-color:var(--tech-accent2);
+  color:var(--tech-accent-text);
+}
+.floating-tech-nav a:hover{
+  background:var(--tech-accent2);
+  border-color:var(--tech-accent2);
+}
+
+/* Each project gets a different atmosphere, not merely a different accent color. */
+body[data-project="arcana"] .technical-content{
+  background:linear-gradient(180deg,rgba(255,125,168,.035),transparent 22%);
+}
+body[data-project="rpg"] .technical-content{
+  background:
+    linear-gradient(rgba(91,61,31,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(91,61,31,.055) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+body[data-project="soul"] .technical-content{
+  background:linear-gradient(180deg,rgba(228,96,73,.045),transparent 18%);
+}
+body[data-project="network"] .technical-content{
+  background:
+    linear-gradient(rgba(100,216,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(100,216,255,.045) 1px,transparent 1px);
+  background-size:46px 46px;
+}
+body[data-project="vr"] .technical-content{
+  background:radial-gradient(circle at 75% 18%,rgba(216,143,207,.10),transparent 28%);
+}
+body[data-project="monkey"] .technical-content{
+  background:repeating-linear-gradient(-12deg,rgba(117,139,40,.045) 0,rgba(117,139,40,.045) 2px,transparent 2px,transparent 28px);
+}
+body[data-project="draw"] .technical-content{
+  background:
+    radial-gradient(circle at 9% 15%,rgba(221,89,65,.09),transparent 18%),
+    radial-gradient(circle at 88% 35%,rgba(118,88,214,.07),transparent 19%);
+}
+
+/* Light project themes need explicit contrast fixes. */
+body[data-project="rpg"] .media-primary-meta,
+body[data-project="vr"] .media-primary-meta,
+body[data-project="monkey"] .media-primary-meta,
+body[data-project="draw"] .media-primary-meta,
+body[data-project="rpg"] .hero-media-meta,
+body[data-project="vr"] .hero-media-meta,
+body[data-project="monkey"] .hero-media-meta,
+body[data-project="draw"] .hero-media-meta{
+  color:#fff;
+}
+body[data-project="rpg"] .tech-noise,
+body[data-project="vr"] .tech-noise,
+body[data-project="monkey"] .tech-noise,
+body[data-project="draw"] .tech-noise{
+  mix-blend-mode:multiply;
+  opacity:.035;
+}
+
+@media(max-width:760px){
+  .technical-index{
+    background:var(--tech-surface);
+    border-color:var(--tech-line);
+  }
+  .technical-index nav{border-color:var(--tech-line)}
+  .index-link{border-color:var(--tech-line)}
+  .index-link.active{
+    border-bottom-color:var(--tech-accent);
+    background:var(--tech-surface2);
+  }
+}
