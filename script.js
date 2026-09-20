@@ -6,8 +6,8 @@ const projects = [
     "type": "UNREAL ENGINE 5.4 · TEAM PROJECT 02",
     "cover": "assets/arcana/main-menu.png",
     "preview": [
-      "assets/arcana/01_home.gif",
       "assets/arcana/02_chat_jihee.gif",
+      "assets/arcana/05_camera_gallery.gif",
       "assets/arcana/03_calendar.gif"
     ],
     "tags": [
@@ -73,8 +73,8 @@ const projects = [
     "cover": "assets/images/soul-overview.png",
     "preview": [
       "assets/videos/soul-combo-play.gif",
-      "assets/videos/soul-lockon-play.gif",
-      "assets/videos/soul-justdodge-play.gif"
+      "assets/videos/soul-justdodge-play.gif",
+      "assets/videos/soul-summon-play.gif"
     ],
     "tags": [
       "C++",
@@ -105,7 +105,7 @@ const projects = [
     "cover": "assets/images/network-overview.png",
     "preview": [
       "assets/images/network-overview.png",
-      "assets/images/network-gamestate-start-battle-1.png",
+      "assets/images/network-hand-card-update.png",
       "assets/images/network-action-queue.png"
     ],
     "tags": [
@@ -170,8 +170,8 @@ const projects = [
     "cover": "assets/images/monkey-overview.png",
     "preview": [
       "assets/videos/monkey-gameplay-play.gif",
-      "assets/videos/monkey-pickup-play.gif",
-      "assets/videos/monkey-destroy-play.gif"
+      "assets/videos/monkey-destroy-play.gif",
+      "assets/videos/monkey-pickup-play.gif"
     ],
     "tags": [
       "Blueprint",
@@ -201,9 +201,9 @@ const projects = [
     "type": "UNREAL ENGINE 5.4.4 · 1인 제작",
     "cover": "assets/images/draw-overview.png",
     "preview": [
+      "assets/videos/draw-field-play.gif",
       "assets/videos/draw-card-play.gif",
-      "assets/videos/draw-hover-play.gif",
-      "assets/videos/draw-field-play.gif"
+      "assets/videos/draw-hover-play.gif"
     ],
     "tags": [
       "UMG",
@@ -249,6 +249,40 @@ let currentPreviewMedia = 0;
 let currentDetailMedia = 0;
 let wheelLocked = false;
 
+// Media transitions can overlap when users click quickly.
+// Tokens make sure only the newest request is allowed to update the DOM.
+let projectSwitchToken = 0;
+let smallPreviewToken = 0;
+let detailMediaToken = 0;
+
+const previewWindow = document.querySelector('.preview-window');
+const detailMediaStage = document.querySelector('.detail-media-stage');
+
+function waitForMedia(src){
+  return new Promise(resolve=>{
+    const image = new Image();
+    let finished = false;
+    const done = ()=>{
+      if(finished) return;
+      finished = true;
+      resolve(src);
+    };
+    image.onload = done;
+    image.onerror = done;
+    image.src = src;
+    if(image.complete) done();
+  });
+}
+
+function warmProjectMedia(project){
+  const work = ()=>project.preview.forEach(src=>waitForMedia(src));
+  if('requestIdleCallback' in window){
+    requestIdleCallback(work,{timeout:1200});
+  } else {
+    setTimeout(work,300);
+  }
+}
+
 const esc = value => String(value).replace(/[&<>"']/g, char => ({
   '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
 }[char]));
@@ -265,7 +299,14 @@ function buildProjectList(){
     const index = Number(button.dataset.index);
     button.addEventListener('mouseenter',()=>selectProject(index));
     button.addEventListener('focus',()=>selectProject(index));
-    button.addEventListener('click',()=>openProject(index));
+    button.addEventListener('click',()=>{
+      const touchLike = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+      if(touchLike){
+        selectProject(index);
+      } else {
+        openProject(index);
+      }
+    });
   });
 }
 
@@ -275,64 +316,106 @@ function setCssTheme(p){
   document.documentElement.style.setProperty('--accent',p.accent);
 }
 
-function selectProject(index, animate=true){
+async function selectProject(index, animate=true){
+  const token = ++projectSwitchToken;
+  ++smallPreviewToken; // cancel any pending GIF change from the previous project
+
   currentProject = (index + projects.length) % projects.length;
   currentPreviewMedia = 0;
   const p = projects[currentProject];
   setCssTheme(p);
+
+  // Text and active state can change immediately.
+  projectType.textContent = p.type;
+  projectTitle.textContent = p.title;
+  projectCaption.textContent = p.kicker;
+  projectTags.innerHTML = p.tags.map(tag=>`<span>${esc(tag)}</span>`).join('');
+  railCount.textContent = `${String(currentProject+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}`;
+  quickRole.textContent = p.role;
+  quickFocus.textContent = p.focus;
+  document.querySelectorAll('.project-button').forEach((button,i)=>button.classList.toggle('active',i===currentProject));
+
+  const topTechnical = document.querySelector('#top-technical');
+  if (topTechnical) topTechnical.href = `technical.html?project=${p.key}#${p.key}`;
+
+  // Hide the previous visual completely while the newly selected media is prepared.
+  previewWindow?.classList.add('media-loading');
+  previewMedia.style.opacity = '0';
+  previewMedia.style.visibility = 'hidden';
 
   if(animate){
     bgImage.style.opacity = '.12';
     bgImage.style.transform = 'scale(1.09)';
     giantWord.style.opacity = '0';
     giantWord.style.transform = 'translateX(-35px)';
-    previewMedia.style.opacity = '0';
   }
 
-  setTimeout(()=>{
-    bgImage.src = p.cover;
-    bgImage.alt = `${p.title} 배경`;
-    giantWord.textContent = p.display;
-    previewMedia.src = p.preview[0];
-    previewMedia.alt = `${p.title} 대표 미디어`;
-    projectType.textContent = p.type;
-    projectTitle.textContent = p.title;
-    projectCaption.textContent = p.kicker;
-    projectTags.innerHTML = p.tags.map(tag=>`<span>${esc(tag)}</span>`).join('');
-    railCount.textContent = `${String(currentProject+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}`;
-    quickRole.textContent = p.role;
-    quickFocus.textContent = p.focus;
-    previewCount.textContent = `01 / ${String(p.preview.length).padStart(2,'0')}`;
-    const topTechnical = document.querySelector('#top-technical');
-    if (topTechnical) topTechnical.href = `technical.html?project=${p.key}#${p.key}`;
+  await Promise.all([
+    waitForMedia(p.cover),
+    waitForMedia(p.preview[0])
+  ]);
 
-    document.querySelectorAll('.project-button').forEach((button,i)=>button.classList.toggle('active',i===currentProject));
+  // A newer project selection happened while loading: do nothing.
+  if(token !== projectSwitchToken) return;
 
-    requestAnimationFrame(()=>{
-      bgImage.style.opacity = '.58';
-      bgImage.style.transform = 'scale(1.035)';
-      giantWord.style.opacity = '1';
-      giantWord.style.transform = 'translateX(0)';
-      previewMedia.style.opacity = '1';
-    });
-  }, animate ? 110 : 0);
+  bgImage.src = p.cover;
+  bgImage.alt = `${p.title} 배경`;
+  giantWord.textContent = p.display;
+
+  previewMedia.src = p.preview[0];
+  previewMedia.alt = `${p.title} 대표 미디어`;
+  previewCount.textContent = `01 / ${String(p.preview.length).padStart(2,'0')}`;
+
+  previewMedia.style.visibility = 'visible';
+  previewWindow?.classList.remove('media-loading');
+
+  requestAnimationFrame(()=>{
+    if(token !== projectSwitchToken) return;
+    bgImage.style.opacity = '.58';
+    bgImage.style.transform = 'scale(1.035)';
+    giantWord.style.opacity = '1';
+    giantWord.style.transform = 'translateX(0)';
+    previewMedia.style.opacity = '1';
+  });
+
+  // Prepare the other two GIFs after the first frame is visible.
+  warmProjectMedia(p);
 }
 
-function moveSmallPreview(step){
+async function moveSmallPreview(step){
   const p = projects[currentProject];
+  const projectAtRequest = currentProject;
+  const token = ++smallPreviewToken;
+
   currentPreviewMedia = (currentPreviewMedia + step + p.preview.length) % p.preview.length;
+  const mediaIndex = currentPreviewMedia;
+  const src = p.preview[mediaIndex];
+
+  previewWindow?.classList.add('media-loading');
   previewMedia.style.opacity = '0';
-  setTimeout(()=>{
-    previewMedia.src = p.preview[currentPreviewMedia];
-    previewCount.textContent = `${String(currentPreviewMedia+1).padStart(2,'0')} / ${String(p.preview.length).padStart(2,'0')}`;
-    previewMedia.style.opacity = '1';
-  },120);
+  previewMedia.style.visibility = 'hidden';
+
+  await waitForMedia(src);
+
+  // Ignore an older request if the user clicked again or changed project.
+  if(token !== smallPreviewToken || projectAtRequest !== currentProject) return;
+
+  previewMedia.src = src;
+  previewMedia.alt = `${p.title} 미디어 ${mediaIndex+1}`;
+  previewCount.textContent = `${String(mediaIndex+1).padStart(2,'0')} / ${String(p.preview.length).padStart(2,'0')}`;
+
+  previewMedia.style.visibility = 'visible';
+  previewWindow?.classList.remove('media-loading');
+  requestAnimationFrame(()=>{
+    if(token === smallPreviewToken) previewMedia.style.opacity = '1';
+  });
 }
 
 document.querySelector('#preview-prev').addEventListener('click',e=>{e.stopPropagation();moveSmallPreview(-1)});
 document.querySelector('#preview-next').addEventListener('click',e=>{e.stopPropagation();moveSmallPreview(1)});
 
 function renderDetail(index){
+  ++detailMediaToken;
   currentProject = index;
   currentDetailMedia = 0;
   const p = projects[index];
@@ -363,23 +446,39 @@ function renderDetail(index){
   renderDetailMedia();
 }
 
-function renderDetailMedia(){
+async function renderDetailMedia(){
   const p = projects[currentProject];
-  const src = p.preview[currentDetailMedia];
+  const projectAtRequest = currentProject;
+  const mediaIndex = currentDetailMedia;
+  const src = p.preview[mediaIndex];
+  const token = ++detailMediaToken;
   const img = document.querySelector('#detail-media');
+
+  detailMediaStage?.classList.add('media-loading');
   img.style.opacity = '0';
-  setTimeout(()=>{
-    img.src = src;
-    img.alt = `${p.title} 미디어 ${currentDetailMedia+1}`;
-    document.querySelector('#detail-media-label').textContent = `MEDIA ${String(currentDetailMedia+1).padStart(2,'0')} / ${String(p.preview.length).padStart(2,'0')}`;
-    document.querySelector('#detail-media-name').textContent = src.split('/').pop();
-    document.querySelector('#detail-dots').innerHTML = p.preview.map((_,i)=>`<button type="button" class="detail-dot ${i===currentDetailMedia?'active':''}" data-media-index="${i}" aria-label="미디어 ${i+1}"></button>`).join('');
-    document.querySelectorAll('.detail-dot').forEach(dot=>dot.addEventListener('click',()=>{
-      currentDetailMedia = Number(dot.dataset.mediaIndex);
-      renderDetailMedia();
-    }));
-    img.style.opacity = '1';
-  },100);
+  img.style.visibility = 'hidden';
+
+  await waitForMedia(src);
+
+  // Only the latest requested media can become visible.
+  if(token !== detailMediaToken || projectAtRequest !== currentProject || mediaIndex !== currentDetailMedia) return;
+
+  img.src = src;
+  img.alt = `${p.title} 미디어 ${mediaIndex+1}`;
+  document.querySelector('#detail-media-label').textContent = `MEDIA ${String(mediaIndex+1).padStart(2,'0')} / ${String(p.preview.length).padStart(2,'0')}`;
+  document.querySelector('#detail-media-name').textContent = src.split('/').pop();
+  document.querySelector('#detail-dots').innerHTML = p.preview.map((_,i)=>`<button type="button" class="detail-dot ${i===mediaIndex?'active':''}" data-media-index="${i}" aria-label="미디어 ${i+1}"></button>`).join('');
+
+  document.querySelectorAll('.detail-dot').forEach(dot=>dot.addEventListener('click',()=>{
+    currentDetailMedia = Number(dot.dataset.mediaIndex);
+    renderDetailMedia();
+  }));
+
+  img.style.visibility = 'visible';
+  detailMediaStage?.classList.remove('media-loading');
+  requestAnimationFrame(()=>{
+    if(token === detailMediaToken) img.style.opacity = '1';
+  });
 }
 
 function moveDetail(step){

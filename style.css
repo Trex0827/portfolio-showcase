@@ -288,3 +288,200 @@ button{color:inherit}
 .preview-back:hover{background:#72f0d0!important;border-color:#72f0d0!important}
 .secondary-action.video-action{background:#ff0033!important;border-color:#ff0033!important;color:#fff!important;box-shadow:0 10px 28px rgba(255,0,51,.18)}
 .secondary-action.video-action:hover{background:#fff!important;border-color:#fff!important;color:#111!important}
+
+/* =========================================
+   v5 mobile showcase rebuild
+   - full-width preview media on phones
+   - readable project names without clipping
+   ========================================= */
+@media (max-width:820px){
+  body{overflow-x:hidden}
+
+  .showcase{
+    height:auto;
+    min-height:100svh;
+    overflow:hidden;
+    padding:94px 5vw 30px;
+  }
+
+  .scene-bg{height:100%}
+  .scene-bg img{object-position:center top}
+
+  .project-rail{
+    position:relative;
+    left:auto;
+    top:auto;
+    transform:none;
+    width:100%;
+    margin-top:38px;
+    z-index:8;
+  }
+
+  .rail-label{
+    width:100%;
+    margin-bottom:12px;
+  }
+
+  .project-list{width:100%}
+
+  .project-button{
+    width:100%;
+    grid-template-columns:38px minmax(0,1fr);
+    gap:5px;
+    align-items:start;
+  }
+
+  .project-button .name{
+    white-space:normal;
+    max-width:100%;
+    font-size:clamp(30px,8.45vw,52px);
+    line-height:.94;
+    overflow-wrap:normal;
+    word-break:keep-all;
+  }
+
+  .project-button.long-title .name{
+    font-size:clamp(28px,7.8vw,48px);
+  }
+
+  .project-list:hover .project-button{opacity:1}
+  .project-list:hover .project-button:hover{transform:none}
+  .project-button:not(.active){opacity:.48}
+
+  .giant-word{
+    bottom:18%;
+    font-size:48vw;
+    opacity:.055!important;
+  }
+
+  .live-preview{
+    position:relative;
+    left:auto;
+    right:auto;
+    top:auto;
+    bottom:auto;
+    transform:none;
+    width:100%;
+    display:block;
+    margin-top:34px;
+    z-index:9;
+  }
+
+  .preview-window{
+    width:100%;
+    aspect-ratio:16/9;
+    max-height:none;
+    background:rgba(0,0,0,.34);
+  }
+
+  .preview-window img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  .preview-media-controls button{
+    width:40px;
+    height:40px;
+    background:rgba(0,0,0,.55);
+  }
+
+  .preview-label{
+    left:14px;
+    right:14px;
+    bottom:12px;
+    font-size:9px;
+  }
+
+  .preview-info{
+    padding:16px 0 0;
+  }
+
+  .preview-info>span{font-size:8px}
+  .preview-info h1{font-size:clamp(27px,8vw,38px);margin:7px 0 5px}
+  .preview-info p{font-size:13px;line-height:1.55}
+
+  .tags{
+    display:flex;
+    gap:6px;
+    margin-top:12px;
+    max-height:32px;
+    overflow:hidden;
+  }
+
+  .tags span{font-size:8px;padding:5px 7px}
+
+  .showcase-footer{
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    width:100%;
+    margin-top:18px;
+  }
+
+  .showcase-footer>span{display:none}
+
+  #open-preview{
+    width:100%;
+    min-height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+  }
+}
+
+@media (max-width:520px){
+  .showcase{padding-left:4vw;padding-right:4vw}
+
+  .project-rail{margin-top:28px}
+
+  .project-button{
+    grid-template-columns:34px minmax(0,1fr);
+  }
+
+  .project-button .name{
+    font-size:clamp(29px,8.1vw,40px);
+  }
+
+  .project-button.long-title .name{
+    font-size:clamp(27px,7.55vw,37px);
+  }
+
+  .live-preview{
+    grid-template-columns:none;
+    width:100%;
+    margin-top:28px;
+  }
+
+  .preview-info>span{font-size:7.5px}
+  .preview-info h1{font-size:26px}
+
+  .giant-word{bottom:20%;font-size:52vw}
+}
+
+
+/* =========================================
+   v6 reliable GIF/media switching
+   ========================================= */
+.preview-window.media-loading::after,
+.detail-media-stage.media-loading::after{
+  content:"LOADING MEDIA";
+  position:absolute;
+  inset:0;
+  z-index:6;
+  display:grid;
+  place-items:center;
+  background:rgba(8,9,12,.72);
+  color:rgba(255,255,255,.72);
+  font:500 10px "DM Mono",monospace;
+  letter-spacing:.16em;
+  pointer-events:none;
+  backdrop-filter:blur(2px);
+}
+.preview-window.media-loading .preview-scanline,
+.preview-window.media-loading .preview-label{
+  opacity:.3;
+}
