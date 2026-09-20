@@ -243,13 +243,62 @@ const quickRole = document.querySelector('#quick-role');
 const quickFocus = document.querySelector('#quick-focus');
 
 const previewThemes = {
-  arcana:{bg:'#2a1728',surface:'#3a2035',surface2:'#47263f',text:'#fff4f8',muted:'#d9bdcc',line:'#6f435f',accent:'#ff7da8',accent2:'#a98cff',accentText:'#2b1220',header:'rgba(42,23,40,.94)',media:'#1c0f1a',next:'#341c31',shadow:'rgba(19,7,16,.34)',hero:'radial-gradient(circle at 82% 18%,rgba(255,125,168,.27),transparent 36%),radial-gradient(circle at 12% 82%,rgba(169,140,255,.16),transparent 31%),linear-gradient(145deg,#2a1728,#482640)'},
-  rpg:{bg:'#e5d6b8',surface:'#f4ead4',surface2:'#dcc8a4',text:'#2d1d14',muted:'#715d4d',line:'#b79d73',accent:'#b84a31',accent2:'#d0a12c',accentText:'#fff9ed',header:'rgba(229,214,184,.95)',media:'#23160f',next:'#d2bd98',shadow:'rgba(65,42,20,.18)',hero:'radial-gradient(circle at 80% 20%,rgba(208,161,44,.33),transparent 35%),radial-gradient(circle at 18% 78%,rgba(184,74,49,.12),transparent 30%),linear-gradient(145deg,#efe3c9,#d7c19d)'},
-  soul:{bg:'#14100f',surface:'#211715',surface2:'#2a1a17',text:'#f5eee8',muted:'#bbaaa2',line:'#52342d',accent:'#e46049',accent2:'#8f252a',accentText:'#190c09',header:'rgba(20,16,15,.95)',media:'#080605',next:'#1a100f',shadow:'rgba(0,0,0,.38)',hero:'radial-gradient(circle at 78% 25%,rgba(228,96,73,.23),transparent 34%),radial-gradient(circle at 16% 75%,rgba(143,37,42,.18),transparent 30%),linear-gradient(145deg,#14100f,#271513)'},
-  network:{bg:'#0d2847',surface:'#153b61',surface2:'#1c4d79',text:'#eff8ff',muted:'#adc9dc',line:'#35678e',accent:'#64d8ff',accent2:'#f2a052',accentText:'#071824',header:'rgba(13,40,71,.95)',media:'#07182b',next:'#102e50',shadow:'rgba(0,13,29,.34)',hero:'radial-gradient(circle at 80% 18%,rgba(100,216,255,.25),transparent 34%),radial-gradient(circle at 18% 78%,rgba(242,160,82,.10),transparent 30%),linear-gradient(145deg,#0d2847,#15466f)'},
-  vr:{bg:'#e7e0f2',surface:'#f6f0ff',surface2:'#d9ceeb',text:'#302243',muted:'#756681',line:'#b8acca',accent:'#7958c7',accent2:'#d88fcf',accentText:'#ffffff',header:'rgba(231,224,242,.95)',media:'#22182f',next:'#d7cce9',shadow:'rgba(70,50,100,.16)',hero:'radial-gradient(circle at 78% 20%,rgba(216,143,207,.31),transparent 34%),radial-gradient(circle at 12% 75%,rgba(121,88,199,.17),transparent 30%),linear-gradient(145deg,#f1eafa,#d8cceb)'},
-  monkey:{bg:'#e8dda0',surface:'#fff3bd',surface2:'#d4c66c',text:'#2b2a15',muted:'#6e6841',line:'#a99c42',accent:'#758b28',accent2:'#e58b31',accentText:'#fffce7',header:'rgba(232,221,160,.95)',media:'#26240d',next:'#d6c96e',shadow:'rgba(55,50,10,.18)',hero:'radial-gradient(circle at 80% 20%,rgba(229,139,49,.26),transparent 34%),radial-gradient(circle at 15% 76%,rgba(117,139,40,.20),transparent 29%),linear-gradient(145deg,#f0e7b7,#cfc05b)'},
-  draw:{bg:'#f0c4ad',surface:'#fff0e7',surface2:'#e9a58c',text:'#37201d',muted:'#785a51',line:'#cb8d77',accent:'#dd5941',accent2:'#7658d6',accentText:'#ffffff',header:'rgba(240,196,173,.95)',media:'#2b1715',next:'#e3a68f',shadow:'rgba(74,35,29,.17)',hero:'radial-gradient(circle at 82% 18%,rgba(118,88,214,.19),transparent 33%),radial-gradient(circle at 15% 78%,rgba(221,89,65,.24),transparent 31%),linear-gradient(145deg,#f6d3c0,#e49a80)'}
+  arcana:{
+    bg:'#35142d',surface:'#551d43',surface2:'#6a2553',
+    text:'#fff7fb',muted:'#efbfd3',line:'#9d4e79',
+    accent:'#ff4f91',accent2:'#b76cff',accentText:'#260817',
+    header:'rgba(53,20,45,.96)',media:'#180911',next:'#421a36',
+    shadow:'rgba(38,0,22,.42)',
+    hero:'radial-gradient(circle at 82% 18%,rgba(255,79,145,.34),transparent 35%),radial-gradient(circle at 13% 82%,rgba(183,108,255,.22),transparent 31%),linear-gradient(145deg,#35142d,#5e2149)'
+  },
+  rpg:{
+    bg:'#d8b36f',surface:'#f1dca8',surface2:'#d5ad67',
+    text:'#2f1b0c',muted:'#6f4e2e',line:'#a77c3f',
+    accent:'#c7462c',accent2:'#e2a21e',accentText:'#fff7e6',
+    header:'rgba(232,207,157,.97)',media:'#251409',next:'#caae76',
+    shadow:'rgba(71,43,16,.22)',
+    hero:'radial-gradient(circle at 80% 20%,rgba(226,162,30,.39),transparent 34%),radial-gradient(circle at 17% 78%,rgba(199,70,44,.16),transparent 29%),linear-gradient(145deg,#efd9a4,#c99e59)'
+  },
+  soul:{
+    bg:'#1b0b0b',surface:'#321312',surface2:'#45191a',
+    text:'#fff1eb',muted:'#d7aba2',line:'#7b3732',
+    accent:'#ff5a43',accent2:'#a51f2a',accentText:'#180806',
+    header:'rgba(27,11,11,.97)',media:'#080504',next:'#24100f',
+    shadow:'rgba(0,0,0,.44)',
+    hero:'radial-gradient(circle at 78% 24%,rgba(255,90,67,.31),transparent 33%),radial-gradient(circle at 16% 76%,rgba(165,31,42,.23),transparent 30%),linear-gradient(145deg,#1b0b0b,#351311)'
+  },
+  network:{
+    bg:'#07325f',surface:'#104c80',surface2:'#17639d',
+    text:'#effbff',muted:'#abdcef',line:'#3681af',
+    accent:'#52e3ff',accent2:'#ff9b42',accentText:'#061722',
+    header:'rgba(7,50,95,.96)',media:'#06182b',next:'#103c69',
+    shadow:'rgba(0,17,38,.4)',
+    hero:'radial-gradient(circle at 80% 18%,rgba(82,227,255,.32),transparent 34%),radial-gradient(circle at 18% 78%,rgba(255,155,66,.15),transparent 30%),linear-gradient(145deg,#07325f,#155487)'
+  },
+  vr:{
+    bg:'#d8caf4',surface:'#f2e9ff',surface2:'#c7b1ee',
+    text:'#2c1742',muted:'#6b5680',line:'#a487d0',
+    accent:'#7048df',accent2:'#e374cf',accentText:'#ffffff',
+    header:'rgba(216,202,244,.97)',media:'#21152f',next:'#cdbce9',
+    shadow:'rgba(75,46,113,.2)',
+    hero:'radial-gradient(circle at 78% 20%,rgba(227,116,207,.38),transparent 33%),radial-gradient(circle at 12% 75%,rgba(112,72,223,.22),transparent 30%),linear-gradient(145deg,#eee5ff,#c8b3ef)'
+  },
+  monkey:{
+    bg:'#d7ca65',surface:'#f4e7a0',surface2:'#c6b542',
+    text:'#29270b',muted:'#625d2b',line:'#95862f',
+    accent:'#6f861d',accent2:'#f08b2e',accentText:'#fffde9',
+    header:'rgba(225,214,112,.97)',media:'#25230c',next:'#cabb59',
+    shadow:'rgba(58,52,9,.21)',
+    hero:'radial-gradient(circle at 80% 20%,rgba(240,139,46,.33),transparent 34%),radial-gradient(circle at 15% 76%,rgba(111,134,29,.24),transparent 29%),linear-gradient(145deg,#eee4a2,#c4b244)'
+  },
+  draw:{
+    bg:'#e79c83',surface:'#ffd8c9',surface2:'#e78368',
+    text:'#3a1c18',muted:'#744439',line:'#bd6f59',
+    accent:'#e74633',accent2:'#7447dc',accentText:'#ffffff',
+    header:'rgba(239,172,148,.97)',media:'#2b1715',next:'#db9279',
+    shadow:'rgba(74,35,29,.2)',
+    hero:'radial-gradient(circle at 82% 18%,rgba(116,71,220,.26),transparent 33%),radial-gradient(circle at 15% 78%,rgba(231,70,51,.30),transparent 31%),linear-gradient(145deg,#f4c2ae,#df846b)'
+  }
 };
 
 function applyPreviewTheme(key){
@@ -479,6 +528,23 @@ function renderDetail(index){
   const demo = document.querySelector('#demo-link');
   if(demo) demo.hidden = true;
 
+  // Keep an external YouTube link visible inside the media panel for every
+  // project that owns a YouTube gameplay video, regardless of the selected GIF.
+  const persistentYoutube = document.querySelector('#detail-youtube-open');
+  const videoId = youtubeVideoId(p.video);
+  if(persistentYoutube){
+    if(videoId){
+      persistentYoutube.href = p.video;
+      persistentYoutube.textContent = '▶ YOUTUBE에서 보기 ↗';
+      persistentYoutube.hidden = false;
+      persistentYoutube.dataset.persistent = 'true';
+    }else{
+      persistentYoutube.href = '#';
+      persistentYoutube.hidden = true;
+      persistentYoutube.dataset.persistent = 'false';
+    }
+  }
+
   const next = projects[(index+1)%projects.length];
   document.querySelector('#next-name').textContent = next.title;
   renderDetailMedia();
@@ -509,7 +575,15 @@ async function renderDetailMedia(){
   img.style.visibility = 'hidden';
   iframe.hidden=true;
   iframe.removeAttribute('src');
-  youtubeOpen.hidden=true;
+
+  // The YouTube link is persistent for projects with a gameplay video.
+  if(youtubeVideoId(p.video)){
+    youtubeOpen.href = p.video;
+    youtubeOpen.textContent = '▶ YOUTUBE에서 보기 ↗';
+    youtubeOpen.hidden = false;
+  }else{
+    youtubeOpen.hidden = true;
+  }
 
   if(item.type==='youtube'){
     if(token !== detailMediaToken || projectAtRequest !== currentProject) return;
@@ -517,6 +591,7 @@ async function renderDetailMedia(){
     iframe.title=`${p.title} 플레이 영상`;
     iframe.hidden=false;
     youtubeOpen.href=item.src;
+    youtubeOpen.textContent='▶ YOUTUBE에서 보기 ↗';
     youtubeOpen.hidden=false;
     document.querySelector('#detail-media-label').textContent = `VIDEO 01 / ${String(items.length).padStart(2,'0')}`;
     document.querySelector('#detail-media-name').textContent = item.label;

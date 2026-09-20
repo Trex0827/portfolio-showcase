@@ -607,3 +607,169 @@ button{color:inherit}
   .preview-hero{background:var(--preview-hero-bg)}
   .detail-youtube-open{right:8px;top:8px;padding:7px 8px;font-size:8px}
 }
+
+
+/* =========================================================
+   v13 — Presentation Preview vs Technical Document
+   Preview = higher saturation / stronger contrast.
+   ========================================================= */
+
+/* Fix low-contrast BACK TO PROJECTS, especially Arcana. */
+.project-preview .preview-back{
+  background:var(--preview-accent)!important;
+  color:var(--preview-accent-text)!important;
+  border:1px solid var(--preview-accent)!important;
+  box-shadow:0 8px 24px var(--preview-shadow)!important;
+  font-weight:900!important;
+}
+.project-preview .preview-back:hover{
+  background:var(--preview-accent2)!important;
+  border-color:var(--preview-accent2)!important;
+  color:var(--preview-accent-text)!important;
+  transform:translateX(-2px);
+}
+
+/* Make Preview read explicitly as presentation/showcase mode. */
+.preview-header{
+  position:sticky;
+}
+.preview-header::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-1px;
+  height:3px;
+  background:linear-gradient(90deg,var(--preview-accent),var(--preview-accent2),transparent 78%);
+  pointer-events:none;
+}
+.preview-copy .eyebrow::after{
+  content:" / PROJECT PREVIEW";
+  opacity:.58;
+}
+.project-preview .preview-hero{
+  box-shadow:inset 0 0 120px color-mix(in srgb,var(--preview-accent) 7%,transparent);
+}
+
+/* Project-specific Back button text contrast safeguards */
+.project-preview[data-project="rpg"] .preview-back,
+.project-preview[data-project="soul"] .preview-back,
+.project-preview[data-project="network"] .preview-back{
+  color:#fff8f2!important;
+}
+.project-preview[data-project="vr"] .preview-back,
+.project-preview[data-project="monkey"] .preview-back,
+.project-preview[data-project="draw"] .preview-back{
+  color:#fff!important;
+}
+
+@media(max-width:760px){
+  .project-preview .preview-back{
+    min-height:42px;
+    padding-inline:14px!important;
+  }
+}
+
+
+/* =========================================================
+   v14 — universal navigation contrast + YouTube red
+   ========================================================= */
+
+/* BACK TO PROJECTS must remain readable on every project palette. */
+.project-preview .preview-back{
+  background:#fff8f2 !important;
+  color:#171217 !important;
+  border:2px solid var(--preview-accent) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.22),
+    0 10px 26px var(--preview-shadow) !important;
+  font-weight:900 !important;
+  text-shadow:none !important;
+}
+.project-preview .preview-back:hover{
+  background:var(--preview-accent) !important;
+  color:var(--preview-accent-text) !important;
+  border-color:var(--preview-accent) !important;
+  transform:translateX(-2px);
+}
+
+/* Remove old project-specific text overrides so every project follows
+   the same high-contrast navigation rule. */
+.project-preview[data-project="rpg"] .preview-back,
+.project-preview[data-project="soul"] .preview-back,
+.project-preview[data-project="network"] .preview-back,
+.project-preview[data-project="vr"] .preview-back,
+.project-preview[data-project="monkey"] .preview-back,
+.project-preview[data-project="draw"] .preview-back,
+.project-preview[data-project="arcana"] .preview-back{
+  color:#171217 !important;
+}
+.project-preview[data-project="rpg"] .preview-back:hover,
+.project-preview[data-project="soul"] .preview-back:hover,
+.project-preview[data-project="network"] .preview-back:hover,
+.project-preview[data-project="vr"] .preview-back:hover,
+.project-preview[data-project="monkey"] .preview-back:hover,
+.project-preview[data-project="draw"] .preview-back:hover,
+.project-preview[data-project="arcana"] .preview-back:hover{
+  color:var(--preview-accent-text) !important;
+}
+
+/* All explicit YouTube actions use the official YouTube red visual language. */
+:root{
+  --youtube-red:#ff0000;
+  --youtube-red-hover:#cc0000;
+}
+.detail-youtube-open,
+.project-preview a[href*="youtube.com"],
+.project-preview a[href*="youtu.be"]{
+  background:var(--youtube-red) !important;
+  border-color:var(--youtube-red) !important;
+  color:#fff !important;
+  box-shadow:0 8px 24px rgba(255,0,0,.22) !important;
+}
+.detail-youtube-open:hover,
+.project-preview a[href*="youtube.com"]:hover,
+.project-preview a[href*="youtu.be"]:hover{
+  background:var(--youtube-red-hover) !important;
+  border-color:var(--youtube-red-hover) !important;
+  color:#fff !important;
+}
+
+
+/* =========================================================
+   v15 — persistent YouTube link inside Preview media
+   ========================================================= */
+.project-preview .detail-youtube-open{
+  position:absolute;
+  top:14px;
+  right:14px;
+  z-index:12;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  padding:10px 13px;
+  background:#ff0000 !important;
+  border:1px solid #ff0000 !important;
+  color:#fff !important;
+  text-decoration:none;
+  font:800 10px "DM Mono",monospace;
+  letter-spacing:.04em;
+  box-shadow:0 8px 24px rgba(255,0,0,.26) !important;
+}
+.project-preview .detail-youtube-open[hidden]{
+  display:none !important;
+}
+.project-preview .detail-youtube-open:hover{
+  background:#cc0000 !important;
+  border-color:#cc0000 !important;
+  color:#fff !important;
+}
+
+@media(max-width:760px){
+  .project-preview .detail-youtube-open{
+    top:10px;
+    right:10px;
+    min-height:36px;
+    padding:9px 11px;
+    font-size:9px;
+  }
+}

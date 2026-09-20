@@ -9,117 +9,61 @@ if(projects.network?.videoLinks?.length){
 
 
 const technicalThemes = {
-  arcana: {
-    bg:"#2a1728",
-    surface:"#3a2035",
-    surface2:"#47263f",
-    text:"#fff4f8",
-    muted:"#d9bdcc",
-    line:"#6f435f",
-    accent:"#ff7da8",
-    accent2:"#a98cff",
-    accentText:"#2b1220",
-    header:"rgba(42,23,40,.94)",
-    media:"#1c0f1a",
-    next:"#341c31",
-    shadow:"rgba(19,7,16,.34)",
-    hero:"radial-gradient(circle at 82% 18%,rgba(255,125,168,.27),transparent 36%),radial-gradient(circle at 12% 82%,rgba(169,140,255,.16),transparent 31%),linear-gradient(145deg,#2a1728,#482640)"
+  arcana:{
+    bg:"#292126",surface:"#3b3036",surface2:"#493b43",
+    text:"#f6eff3",muted:"#c6b7bf",line:"#67545f",
+    accent:"#d36d95",accent2:"#927daf",accentText:"#24141c",
+    header:"rgba(41,33,38,.96)",media:"#171215",next:"#332a30",
+    shadow:"rgba(17,10,14,.28)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(211,109,149,.18),transparent 36%),radial-gradient(circle at 12% 82%,rgba(146,125,175,.12),transparent 31%),linear-gradient(145deg,#292126,#3d3038)"
   },
-  rpg: {
-    bg:"#e5d6b8",
-    surface:"#f4ead4",
-    surface2:"#dcc8a4",
-    text:"#2d1d14",
-    muted:"#715d4d",
-    line:"#b79d73",
-    accent:"#b84a31",
-    accent2:"#d0a12c",
-    accentText:"#fff9ed",
-    header:"rgba(229,214,184,.95)",
-    media:"#23160f",
-    next:"#d2bd98",
-    shadow:"rgba(65,42,20,.18)",
-    hero:"radial-gradient(circle at 80% 20%,rgba(208,161,44,.33),transparent 35%),radial-gradient(circle at 18% 78%,rgba(184,74,49,.12),transparent 30%),linear-gradient(145deg,#efe3c9,#d7c19d)"
+  rpg:{
+    bg:"#e3d8c3",surface:"#f1eadc",surface2:"#d5c8b0",
+    text:"#30251d",muted:"#756a5d",line:"#b4a68f",
+    accent:"#a95f4b",accent2:"#ab8b49",accentText:"#fffaf1",
+    header:"rgba(227,216,195,.97)",media:"#241a14",next:"#d1c3a8",
+    shadow:"rgba(64,49,32,.14)",
+    hero:"radial-gradient(circle at 80% 20%,rgba(171,139,73,.18),transparent 35%),radial-gradient(circle at 18% 78%,rgba(169,95,75,.09),transparent 30%),linear-gradient(145deg,#eee5d4,#d8cab1)"
   },
-  soul: {
-    bg:"#14100f",
-    surface:"#211715",
-    surface2:"#2a1a17",
-    text:"#f5eee8",
-    muted:"#bbaaa2",
-    line:"#52342d",
-    accent:"#e46049",
-    accent2:"#8f252a",
-    accentText:"#190c09",
-    header:"rgba(20,16,15,.95)",
-    media:"#080605",
-    next:"#1a100f",
-    shadow:"rgba(0,0,0,.38)",
-    hero:"radial-gradient(circle at 78% 25%,rgba(228,96,73,.23),transparent 34%),radial-gradient(circle at 16% 75%,rgba(143,37,42,.18),transparent 30%),linear-gradient(145deg,#14100f,#271513)"
+  soul:{
+    bg:"#171414",surface:"#251f1e",surface2:"#302726",
+    text:"#eee9e6",muted:"#b8ada8",line:"#51433f",
+    accent:"#c66b5c",accent2:"#81484d",accentText:"#1b0f0d",
+    header:"rgba(23,20,20,.97)",media:"#0d0a09",next:"#1f1a19",
+    shadow:"rgba(0,0,0,.3)",
+    hero:"radial-gradient(circle at 78% 25%,rgba(198,107,92,.17),transparent 34%),radial-gradient(circle at 16% 75%,rgba(129,72,77,.12),transparent 30%),linear-gradient(145deg,#171414,#251d1c)"
   },
-  network: {
-    bg:"#0d2847",
-    surface:"#153b61",
-    surface2:"#1c4d79",
-    text:"#eff8ff",
-    muted:"#adc9dc",
-    line:"#35678e",
-    accent:"#64d8ff",
-    accent2:"#f2a052",
-    accentText:"#071824",
-    header:"rgba(13,40,71,.95)",
-    media:"#07182b",
-    next:"#102e50",
-    shadow:"rgba(0,13,29,.34)",
-    hero:"radial-gradient(circle at 80% 18%,rgba(100,216,255,.25),transparent 34%),radial-gradient(circle at 18% 78%,rgba(242,160,82,.10),transparent 30%),linear-gradient(145deg,#0d2847,#15466f)"
+  network:{
+    bg:"#182e43",surface:"#243f58",surface2:"#2e506d",
+    text:"#edf3f7",muted:"#b3c1cc",line:"#506b83",
+    accent:"#69b5d0",accent2:"#d09a68",accentText:"#0b1b26",
+    header:"rgba(24,46,67,.97)",media:"#0d1c29",next:"#21384d",
+    shadow:"rgba(4,20,33,.25)",
+    hero:"radial-gradient(circle at 80% 18%,rgba(105,181,208,.18),transparent 34%),radial-gradient(circle at 18% 78%,rgba(208,154,104,.08),transparent 30%),linear-gradient(145deg,#182e43,#29465f)"
   },
-  vr: {
-    bg:"#e7e0f2",
-    surface:"#f6f0ff",
-    surface2:"#d9ceeb",
-    text:"#302243",
-    muted:"#756681",
-    line:"#b8acca",
-    accent:"#7958c7",
-    accent2:"#d88fcf",
-    accentText:"#ffffff",
-    header:"rgba(231,224,242,.95)",
-    media:"#22182f",
-    next:"#d7cce9",
-    shadow:"rgba(70,50,100,.16)",
-    hero:"radial-gradient(circle at 78% 20%,rgba(216,143,207,.31),transparent 34%),radial-gradient(circle at 12% 75%,rgba(121,88,199,.17),transparent 30%),linear-gradient(145deg,#f1eafa,#d8cceb)"
+  vr:{
+    bg:"#e7e2eb",surface:"#f3eff6",surface2:"#d9d1e0",
+    text:"#332d3a",muted:"#716b78",line:"#b4acbc",
+    accent:"#806fa6",accent2:"#b984ad",accentText:"#ffffff",
+    header:"rgba(231,226,235,.97)",media:"#27222d",next:"#d9d1df",
+    shadow:"rgba(69,58,82,.12)",
+    hero:"radial-gradient(circle at 78% 20%,rgba(185,132,173,.17),transparent 34%),radial-gradient(circle at 12% 75%,rgba(128,111,166,.10),transparent 30%),linear-gradient(145deg,#f1edf3,#ddd6e2)"
   },
-  monkey: {
-    bg:"#e8dda0",
-    surface:"#fff3bd",
-    surface2:"#d4c66c",
-    text:"#2b2a15",
-    muted:"#6e6841",
-    line:"#a99c42",
-    accent:"#758b28",
-    accent2:"#e58b31",
-    accentText:"#fffce7",
-    header:"rgba(232,221,160,.95)",
-    media:"#26240d",
-    next:"#d6c96e",
-    shadow:"rgba(55,50,10,.18)",
-    hero:"radial-gradient(circle at 80% 20%,rgba(229,139,49,.26),transparent 34%),radial-gradient(circle at 15% 76%,rgba(117,139,40,.20),transparent 29%),linear-gradient(145deg,#f0e7b7,#cfc05b)"
+  monkey:{
+    bg:"#e4ddb0",surface:"#f3edca",surface2:"#d1c78c",
+    text:"#302f1d",muted:"#6d694f",line:"#aca477",
+    accent:"#7f8b4b",accent2:"#c78b54",accentText:"#fffef4",
+    header:"rgba(228,221,176,.97)",media:"#272514",next:"#d4cb93",
+    shadow:"rgba(55,51,24,.13)",
+    hero:"radial-gradient(circle at 80% 20%,rgba(199,139,84,.17),transparent 34%),radial-gradient(circle at 15% 76%,rgba(127,139,75,.12),transparent 29%),linear-gradient(145deg,#eee8c4,#d6cd96)"
   },
-  draw: {
-    bg:"#f0c4ad",
-    surface:"#fff0e7",
-    surface2:"#e9a58c",
-    text:"#37201d",
-    muted:"#785a51",
-    line:"#cb8d77",
-    accent:"#dd5941",
-    accent2:"#7658d6",
-    accentText:"#ffffff",
-    header:"rgba(240,196,173,.95)",
-    media:"#2b1715",
-    next:"#e3a68f",
-    shadow:"rgba(74,35,29,.17)",
-    hero:"radial-gradient(circle at 82% 18%,rgba(118,88,214,.19),transparent 33%),radial-gradient(circle at 15% 78%,rgba(221,89,65,.24),transparent 31%),linear-gradient(145deg,#f6d3c0,#e49a80)"
+  draw:{
+    bg:"#edd1c5",surface:"#f8ebe6",surface2:"#dfb6a8",
+    text:"#382724",muted:"#79635d",line:"#bf9e93",
+    accent:"#c66f5f",accent2:"#8570b5",accentText:"#ffffff",
+    header:"rgba(237,209,197,.97)",media:"#2d211e",next:"#dfb9ad",
+    shadow:"rgba(76,50,43,.12)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(133,112,181,.13),transparent 33%),radial-gradient(circle at 15% 78%,rgba(198,111,95,.16),transparent 31%),linear-gradient(145deg,#f4e1da,#e3bcae)"
   }
 };
 
@@ -227,7 +171,9 @@ function renderHeroMedia(p){
     iframe.allowFullscreen=true;
     host.appendChild(iframe);
     open.href=p.video;
+    open.textContent='▶ YOUTUBE에서 보기 ↗';
     open.classList.remove('hidden');
+    open.removeAttribute('hidden');
     label.textContent='GAMEPLAY VIDEO / YOUTUBE';
     badge.textContent='▶ GAMEPLAY VIDEO';
     badge.classList.add('video');
@@ -239,6 +185,7 @@ function renderHeroMedia(p){
     host.appendChild(img);
     open.href='#';
     open.classList.add('hidden');
+    open.setAttribute('hidden','');
     label.textContent='PROJECT OVERVIEW';
     badge.textContent='PROJECT OVERVIEW';
     badge.classList.remove('video');
@@ -322,8 +269,10 @@ function renderProject(key){
   $('#index-count').textContent=String(p.slides.length).padStart(2,'0');
 
   const demo=$('#hero-demo');
-  if(youtubeVideoId(p.video)){ demo.href=p.video; demo.textContent='▶ PLAY VIDEO ON YOUTUBE ↗'; demo.classList.remove('disabled'); }
-  else { demo.href='#'; demo.classList.add('disabled'); }
+  if(demo){
+    demo.hidden=true;
+    demo.href=youtubeVideoId(p.video) ? p.video : '#';
+  }
 
   const previewUrl=`index.html?project=${key}&preview=1`;
   const showcaseUrl=`index.html?project=${key}`;
