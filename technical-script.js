@@ -10,66 +10,66 @@ if(projects.network?.videoLinks?.length){
 
 const technicalThemes = {
   arcana:{
-    bg:"#32172d", surface:"#4b2440", surface2:"#603050",
-    text:"#fff5fa", muted:"#e7bdd2", line:"#8c4e72",
-    accent:"#ff6ca4", accent2:"#b477ff", accentText:"#260b18",
-    header:"rgba(50,23,45,.97)", media:"#190b14", next:"#402038",
-    shadow:"rgba(28,7,19,.34)",
-    hero:"radial-gradient(circle at 82% 18%,rgba(255,108,164,.32),transparent 36%),radial-gradient(circle at 12% 82%,rgba(180,119,255,.21),transparent 31%),linear-gradient(145deg,#32172d,#582348)"
+    bg:"#f6ddea", surface:"#fff4fa", surface2:"#edbfd7",
+    text:"#351529", muted:"#80556e", line:"#c989aa",
+    accent:"#e94186", accent2:"#8d5ad8", accentText:"#ffffff",
+    header:"rgba(255,244,250,.96)", media:"#29101f", next:"#e8b4d0",
+    shadow:"rgba(86,27,59,.16)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(233,65,134,.22),transparent 34%),radial-gradient(circle at 14% 82%,rgba(141,90,216,.15),transparent 30%),linear-gradient(145deg,#fff4fa,#efd0e1)"
   },
 
   rpg:{
-    bg:"#e5bf72", surface:"#f8dfa7", surface2:"#d9a64f",
-    text:"#321b0c", muted:"#73502a", line:"#a9772e",
-    accent:"#d84b2f", accent2:"#8a7430", accentText:"#fff8e9",
-    header:"rgba(229,191,114,.97)", media:"#261407", next:"#cf9f4d",
-    shadow:"rgba(71,43,13,.19)",
-    hero:"radial-gradient(circle at 82% 18%,rgba(216,75,47,.23),transparent 34%),radial-gradient(circle at 15% 78%,rgba(138,116,48,.20),transparent 30%),linear-gradient(145deg,#f0d08e,#d5a24f)"
+    bg:"#f4dfab", surface:"#fff6da", surface2:"#e8c875",
+    text:"#3a250c", muted:"#775c30", line:"#b68e43",
+    accent:"#c94a2e", accent2:"#9c7b1d", accentText:"#ffffff",
+    header:"rgba(255,246,218,.97)", media:"#2b1907", next:"#dfbf68",
+    shadow:"rgba(89,57,12,.14)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(201,74,46,.17),transparent 34%),radial-gradient(circle at 14% 82%,rgba(156,123,29,.16),transparent 30%),linear-gradient(145deg,#fff7df,#edcf82)"
   },
 
   soul:{
-    bg:"#19090b", surface:"#301014", surface2:"#48151d",
-    text:"#fff2ec", muted:"#d8aaa2", line:"#71343b",
-    accent:"#ff513e", accent2:"#bd2041", accentText:"#1a0708",
-    header:"rgba(25,9,11,.97)", media:"#090405", next:"#260d10",
-    shadow:"rgba(0,0,0,.42)",
-    hero:"radial-gradient(circle at 80% 20%,rgba(255,81,62,.34),transparent 34%),radial-gradient(circle at 14% 78%,rgba(189,32,65,.22),transparent 30%),linear-gradient(145deg,#19090b,#391016)"
+    bg:"#ead5d3", surface:"#fff1ee", surface2:"#ddb0aa",
+    text:"#301414", muted:"#7b5350", line:"#b87872",
+    accent:"#d84435", accent2:"#8f2f45", accentText:"#ffffff",
+    header:"rgba(255,241,238,.97)", media:"#241010", next:"#d7a39d",
+    shadow:"rgba(83,30,27,.14)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(216,68,53,.20),transparent 34%),radial-gradient(circle at 14% 82%,rgba(143,47,69,.12),transparent 30%),linear-gradient(145deg,#fff0ec,#e3bbb5)"
   },
 
   network:{
-    bg:"#064a7a", surface:"#0b689f", surface2:"#0e82bb",
-    text:"#f0fbff", muted:"#b4e1f2", line:"#2c94c0",
-    accent:"#4fe5ff", accent2:"#ffad49", accentText:"#05141c",
-    header:"rgba(6,74,122,.97)", media:"#041827", next:"#0a5b8f",
-    shadow:"rgba(0,19,40,.34)",
-    hero:"radial-gradient(circle at 82% 18%,rgba(79,229,255,.31),transparent 34%),radial-gradient(circle at 16% 78%,rgba(255,173,73,.16),transparent 30%),linear-gradient(145deg,#064a7a,#0d72aa)"
+    bg:"#d8f1ff", surface:"#f1fbff", surface2:"#a8dcf4",
+    text:"#0b2a3f", muted:"#466e86", line:"#71b4d3",
+    accent:"#008fc1", accent2:"#e47d2d", accentText:"#ffffff",
+    header:"rgba(241,251,255,.97)", media:"#092232", next:"#9ed3ec",
+    shadow:"rgba(17,74,104,.14)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(0,143,193,.20),transparent 34%),radial-gradient(circle at 14% 82%,rgba(228,125,45,.12),transparent 30%),linear-gradient(145deg,#f0fbff,#bfe6f8)"
   },
 
   vr:{
-    bg:"#e4d7ff", surface:"#f5edff", surface2:"#cbb5ff",
-    text:"#2d1741", muted:"#6d5582", line:"#a486dc",
-    accent:"#7248ff", accent2:"#e865c4", accentText:"#ffffff",
-    header:"rgba(228,215,255,.97)", media:"#21132e", next:"#ccb9f1",
-    shadow:"rgba(74,49,112,.17)",
-    hero:"radial-gradient(circle at 82% 18%,rgba(232,101,196,.34),transparent 34%),radial-gradient(circle at 13% 78%,rgba(114,72,255,.21),transparent 30%),linear-gradient(145deg,#f0e8ff,#ccb8f5)"
+    bg:"#eee6ff", surface:"#fbf8ff", surface2:"#d9c8ff",
+    text:"#33224c", muted:"#6e5b83", line:"#aa8cdd",
+    accent:"#6f46e8", accent2:"#cf57b5", accentText:"#ffffff",
+    header:"rgba(251,248,255,.97)", media:"#25172f", next:"#d2c1f1",
+    shadow:"rgba(75,51,111,.13)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(207,87,181,.18),transparent 34%),radial-gradient(circle at 14% 82%,rgba(111,70,232,.14),transparent 30%),linear-gradient(145deg,#fbf8ff,#dfd0fa)"
   },
 
   monkey:{
-    bg:"#dfc93d", surface:"#f7e68b", surface2:"#c4ad27",
-    text:"#292508", muted:"#655d25", line:"#94852a",
-    accent:"#667d13", accent2:"#f48727", accentText:"#fffde6",
-    header:"rgba(223,201,61,.97)", media:"#242005", next:"#c6b02c",
-    shadow:"rgba(60,53,7,.19)",
-    hero:"radial-gradient(circle at 82% 18%,rgba(244,135,39,.34),transparent 34%),radial-gradient(circle at 15% 78%,rgba(102,125,19,.24),transparent 29%),linear-gradient(145deg,#eee084,#c9b22d)"
+    bg:"#f4e899", surface:"#fff9d7", surface2:"#dccb5e",
+    text:"#302b0b", muted:"#6d6531", line:"#a99a3f",
+    accent:"#6b7d17", accent2:"#e87824", accentText:"#ffffff",
+    header:"rgba(255,249,215,.97)", media:"#28240a", next:"#d4c55c",
+    shadow:"rgba(72,64,12,.14)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(232,120,36,.20),transparent 34%),radial-gradient(circle at 14% 82%,rgba(107,125,23,.14),transparent 30%),linear-gradient(145deg,#fff8cf,#e6d66f)"
   },
 
   draw:{
-    bg:"#f0a184", surface:"#ffd8c8", surface2:"#e67f61",
-    text:"#3a1c17", muted:"#78493e", line:"#bc6650",
-    accent:"#ed4935", accent2:"#7650e5", accentText:"#ffffff",
-    header:"rgba(240,161,132,.97)", media:"#2c1512", next:"#df896d",
-    shadow:"rgba(78,35,27,.18)",
-    hero:"radial-gradient(circle at 82% 18%,rgba(118,80,229,.28),transparent 33%),radial-gradient(circle at 15% 78%,rgba(237,73,53,.31),transparent 31%),linear-gradient(145deg,#f5bea8,#e58568)"
+    bg:"#ffd9ca", surface:"#fff3ed", surface2:"#f0b39d",
+    text:"#3d211a", muted:"#80584d", line:"#c98570",
+    accent:"#df503d", accent2:"#6f50cf", accentText:"#ffffff",
+    header:"rgba(255,243,237,.97)", media:"#2d1813", next:"#e6a991",
+    shadow:"rgba(92,47,36,.13)",
+    hero:"radial-gradient(circle at 82% 18%,rgba(111,80,207,.15),transparent 34%),radial-gradient(circle at 14% 82%,rgba(223,80,61,.19),transparent 30%),linear-gradient(145deg,#fff3ed,#f3c2af)"
   }
 };
 

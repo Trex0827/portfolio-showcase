@@ -1028,3 +1028,232 @@ body[data-project="draw"] .tech-section{
     box-shadow:inset 0 -4px 0 var(--tech-accent);
   }
 }
+
+
+/* =========================================================
+   v19 — clear Preview -> Technical mode change
+   Preview remains immersive/dark.
+   Technical becomes a bright project-colored documentation space.
+   ========================================================= */
+
+/* Force the technical page into a light-document hierarchy. */
+body{
+  background:var(--tech-bg) !important;
+  color:var(--tech-text) !important;
+}
+
+.tech-header{
+  background:var(--tech-header) !important;
+  color:var(--tech-text) !important;
+  border-bottom:2px solid var(--tech-accent) !important;
+  box-shadow:0 10px 28px var(--tech-shadow) !important;
+  backdrop-filter:blur(16px);
+}
+
+.tech-header .project-count,
+.tech-header label,
+.tech-header select,
+.tech-header .nav-btn{
+  color:var(--tech-text) !important;
+}
+
+.tech-header select,
+.tech-header .nav-btn:not(.nav-btn-primary){
+  background:var(--tech-surface) !important;
+  border-color:var(--tech-line) !important;
+}
+
+/* Hero now reads as a light editorial intro, not a second preview screen. */
+.tech-hero{
+  background:var(--tech-hero-bg) !important;
+  border-bottom:1px solid var(--tech-line);
+  box-shadow:none !important;
+}
+
+.tech-hero-copy{
+  color:var(--tech-text) !important;
+}
+
+.tech-hero h1,
+.tech-hero h2{
+  color:var(--tech-text) !important;
+}
+
+.tech-hero p{
+  color:var(--tech-muted) !important;
+}
+
+.tech-hero .eyebrow,
+.tech-hero .kicker{
+  color:var(--tech-accent) !important;
+}
+
+/* Index = bright notebook tab. */
+.technical-index{
+  background:var(--tech-surface) !important;
+  border:2px solid var(--tech-line) !important;
+  box-shadow:0 14px 36px var(--tech-shadow) !important;
+}
+
+.index-head{
+  background:var(--tech-surface2) !important;
+  color:var(--tech-text) !important;
+}
+
+.index-link{
+  background:transparent !important;
+  color:var(--tech-muted) !important;
+}
+
+.index-link.active{
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb,var(--tech-accent) 18%,var(--tech-surface)),
+      var(--tech-surface2)) !important;
+  color:var(--tech-text) !important;
+  border-left:5px solid var(--tech-accent) !important;
+  box-shadow:inset 5px 0 0 var(--tech-accent) !important;
+}
+
+/* Sections become bright paper panels with alternating project tint. */
+.tech-section{
+  background:
+    linear-gradient(145deg,
+      var(--tech-surface),
+      color-mix(in srgb,var(--tech-surface2) 34%,var(--tech-surface))) !important;
+  border:1px solid var(--tech-line) !important;
+  border-left:5px solid var(--tech-accent) !important;
+  color:var(--tech-text) !important;
+  box-shadow:0 12px 34px var(--tech-shadow) !important;
+}
+
+.tech-section:nth-child(even){
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb,var(--tech-surface2) 58%,var(--tech-surface)),
+      var(--tech-surface)) !important;
+  border-left-color:var(--tech-accent2) !important;
+}
+
+.section-copy h2,
+.section-copy h3,
+.section-copy strong{
+  color:var(--tech-text) !important;
+}
+
+.section-copy>p,
+.section-note,
+.media-caption,
+.media-gallery-head{
+  color:var(--tech-muted) !important;
+}
+
+.section-number{
+  color:var(--tech-muted) !important;
+  border-bottom-color:var(--tech-line) !important;
+}
+
+.section-number b,
+.section-note b,
+.media-gallery-head strong{
+  color:var(--tech-accent) !important;
+}
+
+/* Tags: white/light chips, obvious accent edge. */
+.hero-tags span{
+  background:var(--tech-surface) !important;
+  color:var(--tech-text) !important;
+  border:1px solid var(--tech-line) !important;
+  box-shadow:inset 0 -3px 0 color-mix(in srgb,var(--tech-accent) 58%,transparent) !important;
+}
+
+/* Keep media itself dark so screenshots/video still pop. */
+.tech-hero-media,
+.media-primary,
+.media-thumb{
+  background:var(--tech-media) !important;
+  border:2px solid var(--tech-accent) !important;
+  box-shadow:0 16px 42px var(--tech-shadow) !important;
+}
+
+/* Footer/next project remains colored but lighter. */
+.next-project-section{
+  background:
+    linear-gradient(135deg,var(--tech-next),var(--tech-surface2)) !important;
+  color:var(--tech-text) !important;
+  border-top:3px solid var(--tech-accent) !important;
+}
+
+/* Project atmosphere: deliberately LIGHT, unlike Preview. */
+body[data-project="arcana"]{
+  background:
+    radial-gradient(circle at 92% 8%,rgba(233,65,134,.15),transparent 24%),
+    linear-gradient(180deg,#f9e7f0,#f2d4e4) !important;
+}
+body[data-project="rpg"]{
+  background:
+    linear-gradient(rgba(122,88,30,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(122,88,30,.075) 1px,transparent 1px),
+    #f4dfab !important;
+  background-size:34px 34px;
+}
+body[data-project="soul"]{
+  background:
+    radial-gradient(circle at 90% 9%,rgba(216,68,53,.14),transparent 24%),
+    linear-gradient(180deg,#f0dcda,#e5c7c4) !important;
+}
+body[data-project="network"]{
+  background:
+    linear-gradient(rgba(0,143,193,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,143,193,.08) 1px,transparent 1px),
+    #d8f1ff !important;
+  background-size:42px 42px;
+}
+body[data-project="vr"]{
+  background:
+    radial-gradient(circle at 88% 10%,rgba(207,87,181,.15),transparent 24%),
+    radial-gradient(circle at 8% 82%,rgba(111,70,232,.11),transparent 25%),
+    #eee6ff !important;
+}
+body[data-project="monkey"]{
+  background:
+    repeating-linear-gradient(-12deg,
+      rgba(107,125,23,.07) 0,
+      rgba(107,125,23,.07) 3px,
+      transparent 3px,
+      transparent 34px),
+    #f4e899 !important;
+}
+body[data-project="draw"]{
+  background:
+    radial-gradient(circle at 10% 18%,rgba(223,80,61,.13),transparent 21%),
+    radial-gradient(circle at 90% 34%,rgba(111,80,207,.11),transparent 20%),
+    #ffd9ca !important;
+}
+
+/* Strong visual transition hint at the top of Technical. */
+.tech-hero::before{
+  content:"TECHNICAL DOCUMENT MODE";
+  position:absolute;
+  right:clamp(22px,4vw,64px);
+  top:90px;
+  z-index:2;
+  color:var(--tech-accent);
+  font:800 9px "DM Mono",monospace;
+  letter-spacing:.14em;
+  padding:7px 9px;
+  border:1px solid var(--tech-line);
+  background:var(--tech-surface);
+}
+
+@media(max-width:760px){
+  .tech-hero::before{
+    display:none;
+  }
+
+  .index-link.active{
+    border-left:0 !important;
+    border-bottom:4px solid var(--tech-accent) !important;
+    box-shadow:inset 0 -4px 0 var(--tech-accent) !important;
+  }
+}
