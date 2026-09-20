@@ -6,8 +6,8 @@ const projects = [
     "type": "UNREAL ENGINE 5.4 · TEAM PROJECT 02",
     "cover": "assets/arcana/main-menu.png",
     "preview": [
+      "assets/arcana/01_home.gif",
       "assets/arcana/02_chat_jihee.gif",
-      "assets/arcana/05_camera_gallery.gif",
       "assets/arcana/03_calendar.gif"
     ],
     "tags": [
