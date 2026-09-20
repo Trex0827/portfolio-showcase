@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="게임 프로그래머 김민종 프로젝트 기술 상세">
+  <title>Technical Detail | 김민종 Game Programmer</title>
+  <link rel="stylesheet" href="technical-style.css">
+</head>
+<body>
+  <div class="tech-noise" aria-hidden="true"></div>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+
+  <header class="tech-header">
+    <div class="tech-header-left">
+      <a id="back-preview" class="nav-btn nav-btn-primary" href="index.html">← PROJECT PREVIEW</a>
+      <a id="back-showcase" class="nav-btn nav-btn-ghost" href="index.html">⌂ SHOWCASE</a>
+    </div>
+    <div class="tech-header-center">
+      <span id="header-project-index">PROJECT 01 / 07</span>
+    </div>
+    <div class="tech-header-right">
+      <label for="project-select">PROJECT</label>
+      <select id="project-select" aria-label="기술 상세 프로젝트 선택"></select>
+    </div>
+  </header>
+
+  <main>
+    <section class="tech-hero" id="top">
+      <div class="tech-hero-copy">
+        <span class="eyebrow" id="hero-type">PROJECT TYPE</span>
+        <h1 id="hero-title">아르카나</h1>
+        <p class="hero-kicker" id="hero-kicker"></p>
+        <p class="hero-desc" id="hero-desc"></p>
+        <div class="hero-tags" id="hero-tags"></div>
+        <div class="hero-actions">
+          <a id="hero-demo" class="demo-link" href="#" target="_blank" rel="noopener">▶ PLAY VIDEO ON YOUTUBE ↗</a>
+          <a id="hero-first-section" class="section-link" href="#section-01">TECHNICAL BREAKDOWN ↓</a>
+        </div>
+      </div>
+      <div class="tech-hero-media">
+        <div id="hero-media-content" class="hero-media-content"></div>
+        <div class="hero-video-badge" id="hero-video-badge">PROJECT OVERVIEW</div>
+        <a id="hero-youtube-open" class="hero-youtube-open" href="#" target="_blank" rel="noopener">YOUTUBE에서 크게 보기 ↗</a>
+        <div class="hero-media-meta">
+          <span id="hero-media-label">PROJECT OVERVIEW</span>
+          <span id="hero-section-count">00 SECTIONS</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="technical-layout">
+      <aside class="technical-index">
+        <div class="index-head">
+          <span>TECHNICAL INDEX</span>
+          <span id="index-count">00</span>
+        </div>
+        <nav id="section-nav" aria-label="기술 상세 목차"></nav>
+      </aside>
+
+      <div class="technical-content" id="technical-content"></div>
+    </section>
+
+    <section class="next-project-section">
+      <div>
+        <span class="eyebrow">NEXT TECHNICAL CASE</span>
+        <h2 id="next-project-title">다음 프로젝트</h2>
+      </div>
+      <div class="next-actions">
+        <a id="return-preview-bottom" href="index.html">← PROJECT PREVIEW</a>
+        <button id="next-project-button" type="button">NEXT PROJECT →</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="floating-tech-nav" class="floating-tech-nav" aria-label="빠른 페이지 이동">
+    <a id="floating-preview" href="index.html">← PROJECT PREVIEW</a>
+    <button id="to-top" type="button">↑ TOP</button>
+  </div>
+
+  <div id="media-lightbox" class="media-lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="확대 보기 닫기">×</button>
+    <button class="lightbox-prev" type="button" aria-label="이전 자료">←</button>
+    <div class="lightbox-stage">
+      <img id="lightbox-image" alt="확대된 프로젝트 자료">
+      <video id="lightbox-video" controls playsinline></video>
+      <div class="lightbox-caption">
+        <span id="lightbox-title"></span>
+        <span id="lightbox-counter"></span>
+      </div>
+    </div>
+    <button class="lightbox-next" type="button" aria-label="다음 자료">→</button>
+  </div>
+
+  <script src="technical-script.js"></script>
+</body>
+</html>

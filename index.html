@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="게임 프로그래머 김민종 포트폴리오 쇼케이스">
+  <title>김민종 | Game Programmer Showcase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-light" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#showcase">KMJ / GAME DEV</a>
+    <div class="topbar-center">SELECT A PROJECT</div>
+    <nav>
+      <button type="button" data-open-profile>PROFILE +</button>
+      <a id="top-technical" href="technical.html?project=arcana#arcana">TECHNICAL</a>
+    </nav>
+  </header>
+
+  <main id="showcase" class="showcase" aria-label="프로젝트 쇼케이스">
+    <div class="scene-bg" aria-hidden="true">
+      <img id="scene-bg-image" src="assets/arcana/main-menu.png" alt="">
+      <div class="scene-bg-wash"></div>
+    </div>
+
+    <div class="giant-word" id="giant-word" aria-hidden="true">ARCANA</div>
+
+    <section class="project-rail" aria-label="프로젝트 선택">
+      <div class="rail-label">
+        <span>PROJECTS</span>
+        <span id="rail-count">01 / 07</span>
+      </div>
+
+      <div id="project-list" class="project-list"></div>
+    </section>
+
+    <section class="live-preview" aria-live="polite">
+      <div class="preview-window">
+        <img id="preview-media" src="assets/arcana/01_home.gif" alt="아르카나 대표 미디어">
+        <div class="preview-scanline" aria-hidden="true"></div>
+        <div class="preview-label">
+          <span>LIVE PREVIEW</span>
+          <span id="preview-media-count">01 / 03</span>
+        </div>
+        <div class="preview-media-controls">
+          <button id="preview-prev" type="button" aria-label="이전 미디어">←</button>
+          <button id="preview-next" type="button" aria-label="다음 미디어">→</button>
+        </div>
+      </div>
+
+      <div class="preview-info">
+        <span id="project-type">UNREAL ENGINE 5.4 · TEAM PROJECT 02</span>
+        <h1 id="project-title">아르카나</h1>
+        <p id="project-caption">게임 속 일상을 연결하는 휴대폰</p>
+        <div id="project-tags" class="tags"></div>
+      </div>
+    </section>
+
+    <aside class="quick-meta">
+      <div>
+        <small>ROLE</small>
+        <strong id="quick-role">휴대폰 UI · 앱 기능</strong>
+      </div>
+      <div>
+        <small>FOCUS</small>
+        <strong id="quick-focus">C++ · UMG · Blueprint</strong>
+      </div>
+      <div>
+        <small>DETAIL</small>
+        <strong>기술 상세 페이지 연결</strong>
+      </div>
+    </aside>
+
+    <div class="showcase-footer">
+      <span>HOVER / ↑↓ / WHEEL TO EXPLORE</span>
+      <button id="open-preview" type="button">OPEN PROJECT ↗</button>
+    </div>
+  </main>
+
+  <section id="project-preview" class="project-preview" aria-hidden="true">
+    <header class="preview-header">
+      <button type="button" class="preview-back">← BACK TO PROJECTS</button>
+      <span id="preview-index">PROJECT 01 / 07</span>
+      <span id="preview-type">TEAM PROJECT</span>
+    </header>
+
+    <div class="preview-hero">
+      <div class="preview-copy">
+        <span class="eyebrow">SELECTED WORK</span>
+        <h2 id="detail-title">아르카나</h2>
+        <p class="detail-kicker" id="detail-kicker">게임 속 일상을 연결하는 휴대폰</p>
+        <p id="detail-desc">프로젝트 설명</p>
+
+        <div class="detail-notes" id="detail-notes"></div>
+
+        <div class="detail-actions">
+          <a id="technical-link" class="primary-action" href="technical.html#arcana">TECHNICAL DETAILS →</a>
+          <a id="demo-link" class="secondary-action" href="#" target="_blank" rel="noopener">PLAY DEMO ↗</a>
+        </div>
+      </div>
+
+      <div class="detail-media-shell">
+        <div class="detail-media-stage">
+          <img id="detail-media" src="assets/arcana/01_home.gif" alt="프로젝트 대표 이미지">
+          <div class="detail-media-caption">
+            <span id="detail-media-label">MEDIA 01</span>
+            <span id="detail-media-name">PROJECT PREVIEW</span>
+          </div>
+        </div>
+        <div class="detail-media-nav">
+          <button id="detail-prev" type="button">← PREV</button>
+          <div id="detail-dots" class="detail-dots"></div>
+          <button id="detail-next" type="button">NEXT →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-tech-strip">
+      <div>
+        <small>TECH STACK</small>
+        <div id="preview-tags" class="preview-tags"></div>
+      </div>
+      <div>
+        <small>WHY THIS PAGE EXISTS</small>
+        <p>여기서는 결과와 분위기를 빠르게 보여주고, 구현 과정은 기술 상세 페이지에서 깊게 설명합니다.</p>
+      </div>
+    </div>
+
+    <footer class="preview-next">
+      <div>
+        <small>NEXT PROJECT</small>
+        <strong id="next-name">언실드 RPG</strong>
+      </div>
+      <button id="next-project" type="button">NEXT PROJECT →</button>
+    </footer>
+  </section>
+
+  <section id="profile-panel" class="profile-panel" aria-hidden="true">
+    <header>
+      <span>PLAYER PROFILE / GAME PROGRAMMER</span>
+      <button type="button" data-close-profile>×</button>
+    </header>
+
+    <div class="profile-layout">
+      <div class="profile-main">
+        <span class="eyebrow">ABOUT ME</span>
+        <h2>김민종<span>.</span></h2>
+        <p class="profile-lead">플레이 경험을 코드로 설계하고,<br>게임의 재미를 끝까지 구현하는 개발자입니다.</p>
+        <p>게임 개발에 대한 관심으로 소프트웨어를 전공하고, 언리얼 엔진을 중심으로 C++와 블루프린트 기반의 게임 시스템을 학습·구현해 왔습니다.</p>
+      </div>
+
+      <div class="profile-photo">
+        <div class="profile-photo-placeholder">프로필 이미지 추가 가능</div>
+      </div>
+
+      <div class="profile-grid">
+        <article>
+          <small>EDUCATION</small>
+          <strong>평택대학교</strong>
+          <p>융합소프트웨어학과<br>2021 — 2025 · 3학년 2학기 수료</p>
+        </article>
+        <article>
+          <small>TRAINING</small>
+          <strong>연세 IT 미래교육원</strong>
+          <p>언리얼 엔진 게임 개발 과정<br>2026.01 — 2026.09</p>
+        </article>
+        <article>
+          <small>CORE STACK</small>
+          <strong>C++ · Blueprint</strong>
+          <p>Unreal Engine 5.4.4<br>UMG · AI · DataTable · Networking</p>
+        </article>
+        <article>
+          <small>COLLABORATION</small>
+          <strong>SVN · Diversion · Notion</strong>
+          <p>Discord · Google Sheets<br>팀 개발 워크플로 경험</p>
+        </article>
+      </div>
+
+      <div class="profile-links">
+        <a href="mailto:kmj08271@gmail.com"><small>EMAIL</small><strong>kmj08271@gmail.com</strong></a>
+        <a href="mailto:kmj082700@naver.com"><small>EMAIL 02</small><strong>kmj082700@naver.com</strong></a>
+        <a href="tel:01057448424"><small>PHONE</small><strong>010-5744-8424</strong></a>
+        <a href="https://www.youtube.com/@티렉스-0123" target="_blank" rel="noopener"><small>YOUTUBE</small><strong>@티렉스-0123 ↗</strong></a>
+        <a href="https://www.canva.com/design/DAHLZcEFADc/8_ObTfciDFen0pWB_T5hIw/edit" target="_blank" rel="noopener"><small>ORIGINAL DOC</small><strong>CANVA PORTFOLIO ↗</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
