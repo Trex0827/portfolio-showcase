@@ -353,3 +353,207 @@ body[data-project="draw"] .tech-noise{
     background:var(--tech-surface2);
   }
 }
+
+
+/* =========================================================
+   v10 — Network gameplay video presentation
+   ========================================================= */
+.hero-video-links{
+  margin-top:18px;
+  border:1px solid var(--tech-line);
+  background:color-mix(in srgb,var(--tech-surface) 82%,transparent);
+  box-shadow:0 14px 36px var(--tech-shadow);
+}
+.hero-video-links[hidden]{display:none}
+.hero-video-links-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:10px 12px;
+  border-bottom:1px solid var(--tech-line);
+  font:500 9px "DM Mono",monospace;
+  letter-spacing:.1em;
+  color:var(--tech-muted);
+}
+.hero-video-links-head strong{color:var(--tech-accent)}
+.hero-video-link-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.hero-video-link{
+  min-height:74px;
+  display:grid;
+  grid-template-columns:34px 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:12px;
+  color:var(--tech-text);
+  text-decoration:none;
+  border-right:1px solid var(--tech-line);
+  border-bottom:1px solid var(--tech-line);
+  transition:background .18s ease,transform .18s ease;
+}
+.hero-video-link:nth-child(2n){border-right:0}
+.hero-video-link:nth-last-child(-n+2){border-bottom:0}
+.hero-video-link:hover{
+  background:var(--tech-surface2);
+  transform:translateY(-1px);
+}
+.hero-video-link.featured{
+  background:color-mix(in srgb,var(--tech-accent) 16%,var(--tech-surface));
+}
+.hero-video-link-index{
+  width:30px;height:30px;
+  display:grid;place-items:center;
+  border:1px solid var(--tech-line);
+  font:600 9px "DM Mono",monospace;
+  color:var(--tech-accent);
+}
+.hero-video-link small{
+  display:block;
+  margin-bottom:4px;
+  color:var(--tech-muted);
+  font:500 8px "DM Mono",monospace;
+  letter-spacing:.08em;
+}
+.hero-video-link strong{font-size:11px}
+.hero-video-link>b{color:var(--tech-accent);font-size:14px}
+
+.network-video-panel{
+  border:1px solid var(--tech-line);
+  background:var(--tech-surface);
+  box-shadow:0 18px 55px var(--tech-shadow);
+}
+.network-video-panel-head{
+  padding:13px 15px;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  border-bottom:1px solid var(--tech-line);
+  font:500 9px "DM Mono",monospace;
+  letter-spacing:.11em;
+  color:var(--tech-muted);
+}
+.network-video-panel-head strong{color:var(--tech-accent)}
+.network-video-panel>p{
+  margin:0;
+  padding:17px 15px;
+  color:var(--tech-muted);
+  line-height:1.7;
+  font-size:13px;
+  border-bottom:1px solid var(--tech-line);
+}
+.network-video-list{display:grid}
+.network-video-list a{
+  min-height:86px;
+  display:grid;
+  grid-template-columns:38px 1fr auto;
+  gap:13px;
+  align-items:center;
+  padding:14px 15px;
+  color:var(--tech-text);
+  text-decoration:none;
+  border-bottom:1px solid var(--tech-line);
+  transition:background .18s ease,padding-left .18s ease;
+}
+.network-video-list a:last-child{border-bottom:0}
+.network-video-list a:hover{
+  background:var(--tech-surface2);
+  padding-left:20px;
+}
+.network-video-list a.primary{
+  background:linear-gradient(90deg,color-mix(in srgb,var(--tech-accent) 20%,var(--tech-surface)),var(--tech-surface));
+}
+.network-video-list a>span{
+  width:34px;height:34px;
+  display:grid;place-items:center;
+  border:1px solid var(--tech-line);
+  color:var(--tech-accent);
+  font:600 9px "DM Mono",monospace;
+}
+.network-video-list small{
+  display:block;
+  color:var(--tech-muted);
+  margin-bottom:4px;
+  font:500 8px "DM Mono",monospace;
+  letter-spacing:.08em;
+}
+.network-video-list strong{font-size:15px}
+.network-video-list a>b{
+  font:700 10px "DM Mono",monospace;
+  color:var(--tech-accent);
+  white-space:nowrap;
+}
+
+@media(max-width:760px){
+  .hero-video-link-grid{grid-template-columns:1fr}
+  .hero-video-link,
+  .hero-video-link:nth-child(2n),
+  .hero-video-link:nth-last-child(-n+2){
+    border-right:0;
+    border-bottom:1px solid var(--tech-line);
+  }
+  .hero-video-link:last-child{border-bottom:0}
+  .network-video-list a{
+    grid-template-columns:34px 1fr;
+  }
+  .network-video-list a>b{
+    grid-column:2;
+    justify-self:start;
+  }
+}
+
+
+/* =========================================================
+   v11 — unify video placement with Project Preview
+   The embedded player is the primary video control.
+   ========================================================= */
+#hero-demo{display:none!important}
+.hero-actions{margin-top:24px}
+.hero-youtube-open{
+  background:rgba(8,9,12,.72)!important;
+  color:#fff!important;
+  border:1px solid rgba(255,255,255,.42)!important;
+  backdrop-filter:blur(8px);
+}
+.hero-youtube-open:hover{background:#fff!important;color:#111!important;border-color:#fff!important}
+
+
+/* =========================================================
+   v12 — mobile technical-page scroll stability
+   ========================================================= */
+@media(max-width:760px){
+  /* Keep the document's vertical momentum fully native. */
+  body{
+    overscroll-behavior-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* The sticky index may scroll horizontally, but must not
+     create vertical snap/restore behavior. */
+  .technical-index nav{
+    scroll-snap-type:none !important;
+    overscroll-behavior-x:contain;
+    scroll-behavior:smooth;
+  }
+
+  .tech-section{
+    scroll-snap-align:none !important;
+    scroll-margin-top:118px;
+  }
+
+  /* Section text is deliberately non-sticky on touch layouts. */
+  .section-copy{
+    position:static !important;
+    top:auto !important;
+  }
+}
+
+@media(pointer:coarse){
+  .technical-content,
+  .tech-section{
+    scroll-snap-type:none !important;
+    scroll-snap-align:none !important;
+  }
+}

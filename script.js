@@ -117,7 +117,7 @@ const projects = [
       "GameState",
       "PlayerController"
     ],
-    "video": "",
+    "video": "https://youtu.be/ml2ENxkPXpk",
     "kicker": "서버 권한 중심으로 구성한 턴 전투",
     "desc": "GameState에서 팀 캐릭터와 전투 시작 조건을 관리하고, BP_TurnPlayerController에서 타깃 선택·스킬 요청·액션 큐·카드 상태를 처리하는 방식으로 네트워크 전투 흐름을 구성했습니다. 단순히 멀티플레이가 된다는 결과보다, 서버와 각 클라이언트가 어떤 책임을 갖는지 보여주는 로직을 중심으로 정리했습니다.",
     "notes": [
@@ -241,6 +241,45 @@ const projectTags = document.querySelector('#project-tags');
 const railCount = document.querySelector('#rail-count');
 const quickRole = document.querySelector('#quick-role');
 const quickFocus = document.querySelector('#quick-focus');
+
+const previewThemes = {
+  arcana:{bg:'#2a1728',surface:'#3a2035',surface2:'#47263f',text:'#fff4f8',muted:'#d9bdcc',line:'#6f435f',accent:'#ff7da8',accent2:'#a98cff',accentText:'#2b1220',header:'rgba(42,23,40,.94)',media:'#1c0f1a',next:'#341c31',shadow:'rgba(19,7,16,.34)',hero:'radial-gradient(circle at 82% 18%,rgba(255,125,168,.27),transparent 36%),radial-gradient(circle at 12% 82%,rgba(169,140,255,.16),transparent 31%),linear-gradient(145deg,#2a1728,#482640)'},
+  rpg:{bg:'#e5d6b8',surface:'#f4ead4',surface2:'#dcc8a4',text:'#2d1d14',muted:'#715d4d',line:'#b79d73',accent:'#b84a31',accent2:'#d0a12c',accentText:'#fff9ed',header:'rgba(229,214,184,.95)',media:'#23160f',next:'#d2bd98',shadow:'rgba(65,42,20,.18)',hero:'radial-gradient(circle at 80% 20%,rgba(208,161,44,.33),transparent 35%),radial-gradient(circle at 18% 78%,rgba(184,74,49,.12),transparent 30%),linear-gradient(145deg,#efe3c9,#d7c19d)'},
+  soul:{bg:'#14100f',surface:'#211715',surface2:'#2a1a17',text:'#f5eee8',muted:'#bbaaa2',line:'#52342d',accent:'#e46049',accent2:'#8f252a',accentText:'#190c09',header:'rgba(20,16,15,.95)',media:'#080605',next:'#1a100f',shadow:'rgba(0,0,0,.38)',hero:'radial-gradient(circle at 78% 25%,rgba(228,96,73,.23),transparent 34%),radial-gradient(circle at 16% 75%,rgba(143,37,42,.18),transparent 30%),linear-gradient(145deg,#14100f,#271513)'},
+  network:{bg:'#0d2847',surface:'#153b61',surface2:'#1c4d79',text:'#eff8ff',muted:'#adc9dc',line:'#35678e',accent:'#64d8ff',accent2:'#f2a052',accentText:'#071824',header:'rgba(13,40,71,.95)',media:'#07182b',next:'#102e50',shadow:'rgba(0,13,29,.34)',hero:'radial-gradient(circle at 80% 18%,rgba(100,216,255,.25),transparent 34%),radial-gradient(circle at 18% 78%,rgba(242,160,82,.10),transparent 30%),linear-gradient(145deg,#0d2847,#15466f)'},
+  vr:{bg:'#e7e0f2',surface:'#f6f0ff',surface2:'#d9ceeb',text:'#302243',muted:'#756681',line:'#b8acca',accent:'#7958c7',accent2:'#d88fcf',accentText:'#ffffff',header:'rgba(231,224,242,.95)',media:'#22182f',next:'#d7cce9',shadow:'rgba(70,50,100,.16)',hero:'radial-gradient(circle at 78% 20%,rgba(216,143,207,.31),transparent 34%),radial-gradient(circle at 12% 75%,rgba(121,88,199,.17),transparent 30%),linear-gradient(145deg,#f1eafa,#d8cceb)'},
+  monkey:{bg:'#e8dda0',surface:'#fff3bd',surface2:'#d4c66c',text:'#2b2a15',muted:'#6e6841',line:'#a99c42',accent:'#758b28',accent2:'#e58b31',accentText:'#fffce7',header:'rgba(232,221,160,.95)',media:'#26240d',next:'#d6c96e',shadow:'rgba(55,50,10,.18)',hero:'radial-gradient(circle at 80% 20%,rgba(229,139,49,.26),transparent 34%),radial-gradient(circle at 15% 76%,rgba(117,139,40,.20),transparent 29%),linear-gradient(145deg,#f0e7b7,#cfc05b)'},
+  draw:{bg:'#f0c4ad',surface:'#fff0e7',surface2:'#e9a58c',text:'#37201d',muted:'#785a51',line:'#cb8d77',accent:'#dd5941',accent2:'#7658d6',accentText:'#ffffff',header:'rgba(240,196,173,.95)',media:'#2b1715',next:'#e3a68f',shadow:'rgba(74,35,29,.17)',hero:'radial-gradient(circle at 82% 18%,rgba(118,88,214,.19),transparent 33%),radial-gradient(circle at 15% 78%,rgba(221,89,65,.24),transparent 31%),linear-gradient(145deg,#f6d3c0,#e49a80)'}
+};
+
+function applyPreviewTheme(key){
+  const t=previewThemes[key] || previewThemes.arcana;
+  const vars={
+    '--preview-bg':t.bg,'--preview-surface':t.surface,'--preview-surface2':t.surface2,
+    '--preview-text':t.text,'--preview-muted':t.muted,'--preview-line':t.line,
+    '--preview-accent':t.accent,'--preview-accent2':t.accent2,'--preview-accent-text':t.accentText,
+    '--preview-header':t.header,'--preview-media':t.media,'--preview-next':t.next,
+    '--preview-shadow':t.shadow,'--preview-hero-bg':t.hero
+  };
+  Object.entries(vars).forEach(([name,value])=>overlay.style.setProperty(name,value));
+  overlay.dataset.project=key;
+}
+
+function youtubeVideoId(url){
+  if(!url) return '';
+  try{
+    const parsed=new URL(url);
+    const host=parsed.hostname.replace(/^www\./,'');
+    if(host==='youtu.be') return parsed.pathname.split('/').filter(Boolean)[0] || '';
+    const queryId=parsed.searchParams.get('v');
+    if(queryId) return queryId;
+    const parts=parsed.pathname.split('/').filter(Boolean);
+    if(parts[0]==='embed' || parts[0]==='shorts') return parts[1] || '';
+    return parts.at(-1) || '';
+  }catch(error){
+    return '';
+  }
+}
 
 const overlay = document.querySelector('#project-preview');
 const profile = document.querySelector('#profile-panel');
@@ -426,6 +465,7 @@ function renderDetail(index){
   currentProject = index;
   currentDetailMedia = 0;
   const p = projects[index];
+  applyPreviewTheme(p.key);
   document.querySelector('#preview-index').textContent = `PROJECT ${String(index+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}`;
   document.querySelector('#preview-type').textContent = p.type;
   document.querySelector('#detail-title').textContent = p.title;
@@ -435,62 +475,74 @@ function renderDetail(index){
   document.querySelector('#preview-tags').innerHTML = p.tags.map(tag=>`<span>${esc(tag)}</span>`).join('');
   document.querySelector('#technical-link').href = `technical.html?project=${p.key}#${p.key}`;
 
+  // YouTube playback lives inside the media panel for consistency with Technical Detail.
   const demo = document.querySelector('#demo-link');
-  if(p.video){
-    demo.href = p.video;
-    demo.textContent = '▶ PLAY VIDEO ON YOUTUBE ↗';
-    demo.classList.add('video-action');
-    demo.classList.remove('disabled');
-  } else {
-    demo.href = '#';
-    demo.textContent = 'MEDIA PREVIEW';
-    demo.classList.add('disabled');
-    demo.classList.remove('video-action');
-  }
+  if(demo) demo.hidden = true;
 
   const next = projects[(index+1)%projects.length];
   document.querySelector('#next-name').textContent = next.title;
   renderDetailMedia();
 }
 
+function detailMediaItems(project){
+  const items=[];
+  const videoId=youtubeVideoId(project.video);
+  if(videoId) items.push({type:'youtube',src:project.video,id:videoId,label:'GAMEPLAY VIDEO / YOUTUBE'});
+  project.preview.forEach(src=>items.push({type:'image',src,label:src.split('/').pop()}));
+  return items;
+}
+
 async function renderDetailMedia(){
   const p = projects[currentProject];
   const projectAtRequest = currentProject;
+  const items=detailMediaItems(p);
+  if(currentDetailMedia >= items.length) currentDetailMedia=0;
   const mediaIndex = currentDetailMedia;
-  const src = p.preview[mediaIndex];
+  const item = items[mediaIndex];
   const token = ++detailMediaToken;
   const img = document.querySelector('#detail-media');
+  const iframe = document.querySelector('#detail-youtube');
+  const youtubeOpen = document.querySelector('#detail-youtube-open');
 
   detailMediaStage?.classList.add('media-loading');
   img.style.opacity = '0';
   img.style.visibility = 'hidden';
+  iframe.hidden=true;
+  iframe.removeAttribute('src');
+  youtubeOpen.hidden=true;
 
-  await waitForMedia(src);
+  if(item.type==='youtube'){
+    if(token !== detailMediaToken || projectAtRequest !== currentProject) return;
+    iframe.src=`https://www.youtube-nocookie.com/embed/${item.id}?rel=0&modestbranding=1`;
+    iframe.title=`${p.title} 플레이 영상`;
+    iframe.hidden=false;
+    youtubeOpen.href=item.src;
+    youtubeOpen.hidden=false;
+    document.querySelector('#detail-media-label').textContent = `VIDEO 01 / ${String(items.length).padStart(2,'0')}`;
+    document.querySelector('#detail-media-name').textContent = item.label;
+    detailMediaStage?.classList.remove('media-loading');
+  }else{
+    await waitForMedia(item.src);
+    if(token !== detailMediaToken || projectAtRequest !== currentProject || mediaIndex !== currentDetailMedia) return;
+    img.src = item.src;
+    img.alt = `${p.title} 미디어 ${mediaIndex+1}`;
+    img.style.visibility = 'visible';
+    detailMediaStage?.classList.remove('media-loading');
+    requestAnimationFrame(()=>{ if(token === detailMediaToken) img.style.opacity = '1'; });
+    document.querySelector('#detail-media-label').textContent = `MEDIA ${String(mediaIndex+1).padStart(2,'0')} / ${String(items.length).padStart(2,'0')}`;
+    document.querySelector('#detail-media-name').textContent = item.label;
+  }
 
-  // Only the latest requested media can become visible.
-  if(token !== detailMediaToken || projectAtRequest !== currentProject || mediaIndex !== currentDetailMedia) return;
-
-  img.src = src;
-  img.alt = `${p.title} 미디어 ${mediaIndex+1}`;
-  document.querySelector('#detail-media-label').textContent = `MEDIA ${String(mediaIndex+1).padStart(2,'0')} / ${String(p.preview.length).padStart(2,'0')}`;
-  document.querySelector('#detail-media-name').textContent = src.split('/').pop();
-  document.querySelector('#detail-dots').innerHTML = p.preview.map((_,i)=>`<button type="button" class="detail-dot ${i===mediaIndex?'active':''}" data-media-index="${i}" aria-label="미디어 ${i+1}"></button>`).join('');
-
+  document.querySelector('#detail-dots').innerHTML = items.map((m,i)=>`<button type="button" class="detail-dot ${i===mediaIndex?'active':''} ${m.type==='youtube'?'video-dot':''}" data-media-index="${i}" aria-label="${m.type==='youtube'?'플레이 영상':'미디어 '+(i+1)}"></button>`).join('');
   document.querySelectorAll('.detail-dot').forEach(dot=>dot.addEventListener('click',()=>{
     currentDetailMedia = Number(dot.dataset.mediaIndex);
     renderDetailMedia();
   }));
-
-  img.style.visibility = 'visible';
-  detailMediaStage?.classList.remove('media-loading');
-  requestAnimationFrame(()=>{
-    if(token === detailMediaToken) img.style.opacity = '1';
-  });
 }
 
 function moveDetail(step){
-  const p = projects[currentProject];
-  currentDetailMedia = (currentDetailMedia + step + p.preview.length) % p.preview.length;
+  const items=detailMediaItems(projects[currentProject]);
+  currentDetailMedia = (currentDetailMedia + step + items.length) % items.length;
   renderDetailMedia();
 }
 
